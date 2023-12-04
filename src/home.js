@@ -8,7 +8,7 @@ function Home({ isLoggedIn }) {
   useEffect(() => {
     const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
 
-    if (isLoggedIn && !hasShownWelcomeMessage) {
+    if (isLoggedIn ) {
       toast.success("Welcome back!", {
         position: "top-right",
         style: {
@@ -38,7 +38,7 @@ function Home({ isLoggedIn }) {
                 <header className="home-landing-container">
                 {!isLoggedIn && (
                             <>
-                        <h1>Please SignIn order to access Administrator tools.</h1>
+                        <h2 className="unique-h2">Please Sign-In in order to access Administrator tools.</h2>
                             </>
                                 )}
                 </header>

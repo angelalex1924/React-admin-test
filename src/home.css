@@ -7,8 +7,12 @@
 }
 
 .home-landing-header {
-    background-color: #2ecc71; /* Cool green color */
-    color: #fff;
+background: rgba(255, 255, 255, 0.26);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.3);    color: #fff;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 30px;
@@ -35,15 +39,20 @@
 }
 
 .home-landing-widget {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #f3f3f3;
+
+    
     padding: 30px;
     margin: 20px;
     text-align: center;
     width: 250px;
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+   
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeInUp 0.5s ease-out;
 }
@@ -56,7 +65,7 @@
 
 .home-landing-title {
    
-    color: #2ecc71; /* Cool green color */
+    color: #06b1e5; /* Cool green color */
 }
 
 .home-landing-description {
@@ -67,7 +76,7 @@
 .home-landing-icon {
     font-size: 2.5em;
     margin-bottom: 15px;
-    color: #2ecc71; /* Cool green color */
+    color: #06b1e5; /* Cool green color */
     transition: transform 0.3s;
 }
 

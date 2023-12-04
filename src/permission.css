@@ -2,9 +2,19 @@
 
 .unique-h2 {
   text-align: center;
-  color: #102635; /* Change the color to your preference */
+  color: #feffff; /* Change the color to your preference */
   font-size: 24px; /* Adjust the font size as needed */
   margin-bottom: 20px; /* Add margin to separate the h2 from the form */
+  animation: blink 1s infinite alternate; /* Προσθήκη αναβοσβήσιμου εφέ */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 body {
   display: grid;

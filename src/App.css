@@ -162,6 +162,39 @@ body {
   font-size: 1.25em;
   margin-right: 20px;
 }
+.logout-button {
+  background-color: #ffffff;
+
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin-right: 10px;
+  transition: border 0.3s ease, background 0.3s ease, color 0.3s ease;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  color: #fa0000;
+}
+
+.logout-button:hover {
+  border-color: #ca0505;
+  color: #ffffff;
+}
+
+.logout-button:active {
+  background-color: #c20b0b;
+  color: #c51212;
+}
+
+.logout-text {
+  color: #ff0000;
+  transition: color 0.3s ease;
+}
+
+.logout-button:hover .logout-text {
+  color: #f0e6e6;
+  font-family: "Poppins", sans-serif;
+  font-style: bold;
+}
 
 
 /* Media query for small screens */

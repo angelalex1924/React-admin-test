@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './regstyle.css';
 
 function Register() {
-  const registerURL = "http://ispconfig.local/api/register";
+  const registerURL = "http://localhost:8000/api/register";
 
   const registerUser = async () => {
     const email = document.getElementById("email").value;

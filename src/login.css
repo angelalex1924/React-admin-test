@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.login-reset {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login-body {
+  background: transparent;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90px 1fr;
+  font-family: "Poppins", sans-serif;
+}
+
+.login-box-container {
+  margin-bottom: 15vh;
+  padding-top: 5vh;
+}
+
+.login-form-container {
+  width: 350px;
+  border: 2px solid rgb(50, 192, 192);
+  height: auto;
+  margin: 25vh auto;
+  border-radius: 20px;
+  box-shadow: 2px 2px 100px #00000057, -2px -2px 100px #0a022288;
+  backdrop-filter: blur(3px);
+  padding-bottom: 5rem;
+}
+
+.login-heading {
+  text-align: center;
+  padding: 1rem 0.4rem;
+  color: #f5f4f4;
+  letter-spacing: 2px;
+  font-size: 30px;
+}
+
+.login-username-container,
+.login-password-container {
+  margin: 1rem 1rem;
+  align-items: center;
+}
+
+.login-username-container input,
+.login-password-container input {
+  padding: 12px;
+  margin-bottom: 15px;
+  width: calc(100% - 24px);
+  box-sizing: border-box;
+  border: 1px solid #0fc9a1;
+  border-radius: 5px; /* Adjusted border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.171);
+  background-color: #fff; /* Initial white background color */
+  color: #00ffb3; /* Initial text color */
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.login-username-container input::placeholder,
+.login-password-container input::placeholder {
+  color: #00ffc8;
+}
+
+.login-username-container input:focus,
+.login-password-container input:focus {
+  outline: none;
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
+  background-color: #19daa0; /* Blue background color on focus */
+  color: #ffffff; /* White text color on focus */
+}
+
+.login-username-container input:focus::placeholder,
+.login-password-container input:focus::placeholder {
+  color: #ffffffb0; /* Slightly transparent white placeholder color on focus */
+}
+
+.login-password-container p {
+  color: #12b982;
+  margin-top: 0.5rem;
+}
+
+.login-icon {
+  padding-right: 0.5rem;
+  color: #ddd;
+}
+
+.login-logo {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: default;
+}
+
+.login-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 7rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login-remember-container {
+  display: inline-flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.login-checkbox {
+  margin-right: 0.5rem;
+}
+
+.login-a {
+  text-decoration: none;
+  color: #22d4bc;
+  transition: all 0.3s;
+}
+
+.login-a:hover {
+  opacity: 0.8;
+}
+
+.login-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  left: auto;
+}
+
+.login-btn-box a {
+  padding: 0.5rem 2rem;
+  border-radius: 50px;
+  outline: none;
+  border-style: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #fff;
+  text-align: center;
+  color: #22d4bc;
+  font-weight: bold;
+}
+
+.login-btn-box-admin-container a:hover {
+  opacity: 0.8;
+}
+
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  font-size: 0.75rem;
+  margin-top: 2rem;
+  font-weight: bold;
+}

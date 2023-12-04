@@ -1,0 +1,113 @@
+/* Updated styles for improved responsiveness and mobile-friendliness */
+
+/* Unique class names */
+#home-landing-container {
+    text-align: center;
+    padding: 50px;
+}
+
+.home-landing-header {
+    background-color: #2ecc71; /* Cool green color */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.home-landing-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.479);
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Set text color */
+}
+
+.home-landing-header p {
+    font-size: 1.3em;
+}
+
+.home-landing-widgets {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.home-landing-widget {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.home-landing-widget:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.home-landing-title {
+   
+    color: #2ecc71; /* Cool green color */
+}
+
+.home-landing-description {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+.home-landing-icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #2ecc71; /* Cool green color */
+    transition: transform 0.3s;
+}
+
+.home-landing-widget:hover .home-landing-icon {
+    transform: rotate(360deg);
+}
+
+/* Additional styling for improved responsiveness */
+/* Additional styling for improved responsiveness */
+/* Additional styling for improved responsiveness */
+/* Additional styling for improved responsiveness */
+@media only screen and (max-width: 768px) {
+    .home-landing-widgets {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home-landing-widget {
+        width: 80%;
+        margin: 20px auto; /* Center the widgets */
+    }
+
+    .home-landing-header h1 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        max-height: 50px; /* Adjust as needed */
+        overflow: hidden;
+    }
+
+    .home-landing-header p {
+        font-size: 1em;
+    }
+
+    .home-landing-icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    /* Ensure the header doesn't go above the navbar on small screens */
+    .home-landing-header {
+        margin-top: 10px; /* Adjust as needed */
+    }
+}

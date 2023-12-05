@@ -1,5 +1,44 @@
 /* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Υπάρχουσες κλάσεις Dark Mode */
+body.dark-mode {
+  /* Στυλ Dark Mode */
+  background-image: linear-gradient(to bottom right, #05a763, #030158, #040227);
+}
+
+.light-back {
+  /* Στυλ Dark Mode */
+  background-color: #fff;
+}
+
+/* Καινούριες κλάσεις Light Mode */
+body.light-mode {
+  /* Στυλ Light Mode */
+  background-image: linear-gradient(to bottom right, #0a945b, #62fd09, #a3c704);
+}
+
+/* Κλάση για το Light Mode μόνο στο dropdown */
+.body.light-mode .section-dropdown {
+  background-color: #111; /* Αλλάξτε το χρώμα του dropdown για το Light Mode */
+}
+
+/* Κλάση για το Light Mode μόνο στα links */
+.body.light-mode a {
+  color: #333; /* Αλλάξτε το χρώμα των links για το Light Mode */
+}
+
+/* Κλάση για το Light Mode μόνο στο dropdown υποσέλιδο */
+.body.light-mode .section-dropdown-sub {
+  background-color: #111; /* Αλλάξτε το χρώμα του υποσέλιδου dropdown για το Light Mode */
+  color: #fff; /* Αλλάξτε το χρώμα κειμένου για το Light Mode */
+}
 /* Reset some default styles */
 html, body, h1, h2, h3, p, ul, li {
   margin: 0;
@@ -132,19 +171,57 @@ body {
 .admin-dropdown .admin-dropdown-content {
   display: none;
   position: absolute;
-  background-color: #0dce7d;
+  background-color: #2ecc71;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  border-radius: 15px;
+  border-radius: 10px;
   top: 40px;
   left: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .admin-dropdown:hover .admin-dropdown-content {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.admin-dropdown .admin-dropdown-content a {
+  color: #fff;
+  padding: 12px 20px;
+  display: block;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.admin-dropdown:hover .admin-dropdown-content a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Προσθήκη του animation που θέλετε να διατηρήσετε */
+.dropdown-content li {
+  transition: background 0.3s ease, color 0.3s ease;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.dropdown-content li:hover {
+  background: #1d1f24;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 0.7em 0.5em;
+  color: #fff;
+  margin: 0.1em 0;
+  text-decoration: none;
+}
 .nav-links.open {
   flex-direction: column;
   align-items: flex-start;
@@ -164,36 +241,119 @@ body {
 }
 .logout-button {
   background-color: #ffffff;
-
+  border:#ff2727;
   border-radius: 50px;
   padding: 10px 20px;
   margin-right: 10px;
-  transition: border 0.3s ease, background 0.3s ease, color 0.3s ease;
-  position: relative;
+  transition: background 0.3s ease, color 0.3s ease;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
-  color: #fa0000;
+  color: #ff2727;
+  text-decoration: none; /* Make sure the link is not underlined */
 }
 
-.logout-button:hover {
-  border-color: #ca0505;
+.logout-button:hover,
+.logout-button:active {
+  background-color: #ff2222;
   color: #ffffff;
 }
 
-.logout-button:active {
-  background-color: #c20b0b;
-  color: #c51212;
-}
+/* If you want to apply different styles to the text in normal and hover states, you can use a separate class for the text */
 
 .logout-text {
-  color: #ff0000;
+  color: #ff2020;
   transition: color 0.3s ease;
 }
 
-.logout-button:hover .logout-text {
-  color: #f0e6e6;
-  font-family: "Poppins", sans-serif;
-  font-style: bold;
+.logout-button:hover .logout-text,
+.logout-button:active .logout-text {
+  color: #ffffff;
+}
+.menu-icon.open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dark-light:checked + label,
+.dark-light:not(:checked) + label {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 20000;
+  display: block;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  cursor: pointer;
+  transition: all 200ms linear;
+  box-shadow: 0 0 25px rgba(255, 235, 167, 0.45);
+}
+
+.dark-light:checked + label {
+  transform: rotate(360deg);
+}
+
+.dark-light:checked + label:after,
+.dark-light:not(:checked) + label:after {
+  position: absolute;
+  content: '';
+  top: 1px;
+  left: 1px;
+  overflow: hidden;
+  z-index: 2;
+  display: block;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  background-color: #102770;
+  background-image: url('https://assets.codepen.io/1462889/moon.svg');
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 200ms linear;
+  opacity: 0;
+}
+
+.dark-light:checked + label:after {
+  opacity: 1;
+}
+
+.dark-light:checked + label:before,
+.dark-light:not(:checked) + label:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+  display: block;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  background-color: #48dbfb;
+  background-image: url('https://assets.codepen.io/1462889/sun.svg');
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 200ms linear;
+}
+
+.dark-light:checked + label:before {
+  background-color: #000;
 }
 
 

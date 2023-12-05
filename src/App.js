@@ -1,8 +1,7 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import Register from './register';
 import Login from './login';
 import Admin from './admin';
@@ -10,12 +9,13 @@ import Roles from './roles';
 import User from './user';
 import Permissions from './permissions';
 import Home from './home';
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
- 
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
     const storedToken = localStorage.getItem('token');
     if (storedToken) {
@@ -23,15 +23,29 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const storedDarkMode = localStorage.getItem('darkMode');
+    if (storedDarkMode) {
+      setIsDarkMode(storedDarkMode === 'true');
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', isDarkMode.toString());
+    const body = document.body;
+    body.classList.toggle('dark-mode', isDarkMode);
+    body.classList.toggle('light-mode', !isDarkMode);
+  }, [isDarkMode]);
+
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
 
   const handleLogout = async () => {
     const logoutUrl = "http://localhost:8000/api/logout";
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-
+   
+  
+    
     try {
       const response = await fetch(logoutUrl, {
         method: "POST",
@@ -44,7 +58,7 @@ function App() {
       if (response.ok) {
         localStorage.removeItem("token");
         console.log("Logout successful");
-        toast.info("👌 You have logged out!", {
+        toast("👌 You have logged out!", {
           position: "top-right",
           style: {
             autoClose: 2000,
@@ -53,8 +67,8 @@ function App() {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            background: "linear-gradient(to bottom right, #03ea5a, #c1b408, #8cff00)",
-            color: "#fff",
+            background: "#fff",
+            color: "#333",
           },
         });
         setIsLoggedIn(false);
@@ -89,16 +103,19 @@ function App() {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  
+  const handleDarkModeToggle = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
     <Router>
       <nav className="navbar">
         <div className="navlist">
-          <div className="menu-icon" onClick={toggleDropdown}>
-            <div className={`bar ${isDropdownOpen ? 'change' : ''}`} />
-            <div className={`bar ${isDropdownOpen ? 'change' : ''}`} />
-            <div className={`bar ${isDropdownOpen ? 'change' : ''}`} />
+        <div className={`menu-icon ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>
+            <div className="bar" />
+             <div className="bar" />
+            <div className="bar" />
+       
           </div>
           <ul className={`nav-links ${isDropdownOpen ? 'open' : ''}`}>
             <li>
@@ -151,11 +168,19 @@ function App() {
             </li>
             <li>
               {isLoggedIn ? (
-                <button className="logout-button" onClick={handleLogout}>
-                  <span className="logout-text">Logout</span>
+                <button className="logout-button" onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+                  <span className="logout-text"> Logout</span>
                 </button>
               ) : null}
             </li>
+            <input
+          type="checkbox"
+          id="dark-mode-toggle"
+          className="dark-light"
+          checked={isDarkMode}
+          onChange={handleDarkModeToggle}
+        />
+        <label htmlFor="dark-mode-toggle"></label>
           </ul>
         </div>
       </nav>
@@ -166,7 +191,10 @@ function App() {
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/user" element={<User />} />
-        <Route path="/roles" element={<Roles />} />
+        <Route
+          path="/roles"
+          element={isLoggedIn ? <Roles /> : <Navigate to="/login" />}
+        />
         <Route path="/permissions" element={<Permissions />} />
       </Routes>
     </Router>

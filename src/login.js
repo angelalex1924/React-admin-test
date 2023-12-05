@@ -35,8 +35,8 @@ function Login({ onLogin }) {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-            background: "linear-gradient(to bottom right, #03ea5a, #c1b408, #8cff00)",
-            color: "#fff",
+            background: "#fff",
+            color: "#333",
           },
         });
 

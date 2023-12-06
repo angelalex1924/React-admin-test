@@ -1,55 +1,111 @@
+// User.js
 import React from "react";
-import './user.css';
+import "./permission.css";
 
-function User()
-{
-    return(
-<div>  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link rel="stylesheet" href="roles.css" />
-        <style dangerouslySetInnerHTML={{__html: "\n  \n  " }} />
-        <div id="main-content">
-          <div id="role-form">
-            <h2>User Management</h2>
-            {/* Option 1: Create a new role */}
-            <div className="frame">
-              <h3>Create a new Permission</h3>
-              <form id="create-role-form">
-                <label htmlFor="new-role-name">Permission Name:</label>
-                <input type="text" id="new-role-name" name="new-role-name" required />
-                <button type="button" onclick="createRole()">Submit</button>
-              </form>
-            </div>
-            {/* Option 2: Show roles */}
-            <div className="frame">
-              <h3>Show Permissions</h3>
-              <button type="button" onclick="showRoles()">Show Permissions</button>
-            </div>
-            {/* Option 3: Update a role */}
-            <div className="frame">
-              <h3>Update a Permisison</h3>
-              <form id="update-role-form">
-                <label htmlFor="update-role-id">Permission ID:</label>
-                <input type="text" id="update-role-id" name="update-role-id" required />
-                <label htmlFor="update-role-name">New Permission Name:</label>
-                <input type="text" id="update-role-name" name="update-role-name" required />
-                <button type="button" onclick="updateRole()">Update Permisison</button>
-              </form>
-            </div>
-            {/* Option 4: Delete a role */}
-            <div className="frame">
-              <h3>Delete a Permission</h3>
-              <form id="delete-role-form">
-                <label htmlFor="delete-role-id">Permisison ID:</label>
-                <input type="text" id="delete-role-id" name="delete-role-id" required />
-                <button type="button" onclick="deleteRole()">Delete Permisison</button>
-              </form>
-            </div>
+function User() {
+  return (
+    <div id="main-content" className="unique-main-content">
+      
+      <div className="role-form">
+      <h2 className="unique-h2">User Management</h2>
+      <div className="form">
+      <div className="input-container unique-frame-role">
+      
+            <h3>Assign Role to User</h3>
+            <form id="create-permission-form">
+              <label htmlFor="new-permission-name" className="label-role">
+                Role Name:
+              </label>
+              <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                required
+              />
+              <label htmlFor="new-permission-name" className="label-role">
+                User ID:
+              </label>
+              <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                required
+              />
+              <button
+                type="button"
+                className="button-role button-create"
+                onClick={() => createPermission()}
+              >
+               <span>Assign Role</span>
+              </button>
+            </form>
+          </div>
+          
+
+          <div className="input-container unique-frame-role">
+            <h3>Show Roles of a User</h3>
+            <form>
+            <label htmlFor="update-permission" className="label-role">
+                User ID:
+              </label>
+              <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => showPermissions()}
+                className="button-role button-show"
+              >
+                <span>Show Roles</span>
+              </button>
+            </form>
+          </div>
+
+          <div className="input-container unique-frame-role">
+            <h3>Remove Role from User</h3>
+            <form>
+              <label htmlFor="delete-role-id" className="label-role">
+                Role ID:
+              </label>
+              <input
+                type="text"
+                id="delete-permission-id"
+                name="delete-permission-id"
+                className="input-role"
+                required
+              />
+              <label htmlFor="delete-role-id" className="label-role">
+                User ID:
+              </label>
+              <input
+                type="text"
+                id="delete-permission-id"
+                name="delete-permission-id"
+                className="input-role"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => deleteRole()}
+                className="button-role button-delete"
+              >
+                <span>Remove Role</span>
+              </button>
+            </form>
           </div>
         </div>
-
-</div>
-        )
-    }
+      </div>
+      </div>
+   
+      
     
-    export default User;
+  );
+}
+
+export default User;

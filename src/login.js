@@ -11,6 +11,8 @@ function Login({ onLogin }) {
   const LoginUser = async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
+    localStorage.setItem("hasShownWelcomeMessage", "true");
+
 
     try {
       const response = await fetch(loginUrl, {
@@ -22,10 +24,13 @@ function Login({ onLogin }) {
       });
 
       if (response.ok) {
+        console.log("test");
         const data = await response.json();
         const token = data.access_token;
+        
 
         localStorage.setItem("token", token);
+        
         toast.success("Login successful!", {
           position: "top-right",
           style: {
@@ -42,7 +47,7 @@ function Login({ onLogin }) {
 
         // Call the onLogin callback to update the login state in App.js
         onLogin();
-
+       
         // Redirect to the home page after a successful login
         navigate("/");
       } else {

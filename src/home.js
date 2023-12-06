@@ -5,31 +5,30 @@ import './home.css';
 import { ToastContainer, toast } from "react-toastify";
 
 function Home({ isLoggedIn }) {
-  useEffect(() => {
-    const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
+    useEffect(() => {
+        const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
 
-    if (isLoggedIn ) {
-      toast.success("Welcome back!", {
-        position: "top-right",
-        style: {
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        background: "#fff",
-        color: "#333",
-        },
-      });
+        if (isLoggedIn && !hasShownWelcomeMessage) {
+            toast.success("Welcome back!", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                background: "#fff",
+                color: "#333",
+            });
 
-      // Set a flag in localStorage to indicate that the message has been shown
-      localStorage.setItem("hasShownWelcomeMessage", "true");
-    }
-  }, [isLoggedIn]);
+            localStorage.setItem("hasShownWelcomeMessage", "true");
+        }
+    }, [isLoggedIn]);
+
+
     return (
         <div>
-            <ToastContainer/>
+            <ToastContainer />
             <div id="home-landing-container" className="home-landing-container">
                 <header className="home-landing-header">
                     <h1>Admin Dashboard</h1>

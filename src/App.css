@@ -21,6 +21,8 @@
 body.dark-mode {
   /* Στυλ Dark Mode */
   background-image: linear-gradient(to bottom right, #05a763, #030158, #040227);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .light-back {
@@ -32,6 +34,8 @@ body.dark-mode {
 body.light-mode {
   /* Στυλ Light Mode */
   background-image: linear-gradient(to bottom right, #0a945b, #62fd09, #a3c704);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Κλάση για το Light Mode μόνο στο dropdown */
@@ -63,7 +67,7 @@ html, body, h1, h2, h3, p, ul, li {
 html {
   font-family: "Poppins", sans-serif;
   background-image: linear-gradient(to bottom right, #05a763, #030158, #040227);
-
+overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

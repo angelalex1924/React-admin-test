@@ -43,7 +43,7 @@ function App() {
   };
 
   const handleLogout = async () => {
-    const logoutUrl = "http://localhost:8000/api/logout";
+    const logoutUrl = "http://172.16.0.155:8000/api/logout";
    
 
     
@@ -53,6 +53,8 @@ function App() {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`
+
+
         },
       });
 
@@ -73,6 +75,7 @@ function App() {
           },
         });
         setIsLoggedIn(false);
+        
       } else {
         toast.info("👌 You have logged out!", {
           position: "top-right",

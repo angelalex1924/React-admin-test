@@ -33,14 +33,14 @@ body.light-mode .home-landing-header {
         animation: fadeIn 1s ease-out;
     }
 
-body.dark-mode .home-landing-header h1 {
+body.dark-mode .home-landing-header h2 {
     font-size: 3em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.479);
     text-decoration: none; /* Remove underline */
     color: #ffffff; /* Set text color */
 }
-body.light-mode .home-landing-header h1 {
+body.light-mode .home-landing-header h2 {
     font-size: 3em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.479);
@@ -139,34 +139,19 @@ body.dark-mode .home-landing-icon {
 /* Additional styling for improved responsiveness */
 /* Additional styling for improved responsiveness */
 @media only screen and (max-width: 768px) {
+    .home-landing-header h2 {
+        font-size: 2.5em; /* Adjust as needed */
+        margin-bottom: 5px;
+    }
+
     .home-landing-widgets {
         flex-direction: column;
         align-items: center;
     }
 
     .home-landing-widget {
-        width: 80%;
-        margin: 20px auto; /* Center the widgets */
-    }
-
-    .home-landing-header h1 {
-        font-size: 2em;
-        margin-bottom: 10px;
-        max-height: 50px; /* Adjust as needed */
-        overflow: hidden;
-    }
-
-    .home-landing-header p {
-        font-size: 1em;
-    }
-
-    .home-landing-icon {
-        font-size: 2em;
-        margin-bottom: 10px;
-    }
-
-    /* Ensure the header doesn't go above the navbar on small screens */
-    .home-landing-header {
-        margin-top: 10px; /* Adjust as needed */
+        width: 90%; /* Adjust as needed */
+        margin: 5pxx auto; /* Adjust margin to reduce the gap */
+        padding: 15px; /* Add padding for better spacing within the box */
     }
 }

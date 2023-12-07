@@ -148,3 +148,11 @@ function App() {
 }
 
 export default App;
+
+
+useEffect(() => {
+  AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+  });

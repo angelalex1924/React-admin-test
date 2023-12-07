@@ -1,3 +1,67 @@
-
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
   
- 
+  .admin-container {
+    padding: 20px;
+    background: linear-gradient(to right, #0a9768, #0a0c81);
+    color: #ffffff;
+    overflow: hidden;
+  }
+  
+  .promo-banner {
+    background: linear-gradient(to right, #25ccf7, #4834d4);
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .promo-banner h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .admin-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .admin-section {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(to right, #25ccf7, #4834d4);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .admin-widget {
+    margin-top: 20px;
+  }
+  
+  .admin-instructions {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .admin-instructions p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  /* AOS Library Animations */
+  [data-aos] {
+    opacity: 0;
+    transition-duration: 1s;
+  }
+  
+  [data-aos].aos-animate {
+    opacity: 1;
+  }
+  

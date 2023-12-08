@@ -1,10 +1,19 @@
 // User.js
-import React from "react";
+import AOS from "aos";
 import "./permission.css";
+import React, { useEffect } from "react";
+
 
 function User() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   return (
-    <div id="main-content" className="unique-main-content">
+    <div id="main-content" className="unique-main-content" data-aos="fade-up">
       
       <div className="role-form">
       <h2 className="unique-h2">User Management</h2>

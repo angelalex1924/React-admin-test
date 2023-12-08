@@ -26,7 +26,7 @@ const Admin = () => {
           </div>
         </div>
         <div className="admin-section" data-aos="fade-up" data-aos-delay="200">
-          <h2>📊 Statistics</h2>
+          <h2>🛡️ Permissions</h2>
           <div className="admin-widget">
             <p>Total Users: 256</p>
             <p>Active Sessions: 20</p>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './regstyle.css';
+import AOS from "aos";
 
 function Register() {
   const registerURL = "http://172.16.0.155:8000/api/register";
@@ -50,6 +51,13 @@ function Register() {
       });
     }
   };
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
 
   return (
     <div>
@@ -65,7 +73,7 @@ draggable
 pauseOnHover
 theme="colored"
 />
-      <main className="register-box">
+      <main className="register-box" data-aos="fade-up">
         <form className="register-form">
           <h3 className="register-heading">Sign Up</h3>
           <div className="register-input-box">

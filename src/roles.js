@@ -1,10 +1,19 @@
 // Roles.js
-import React from "react";
+import React, { useEffect } from "react";
 import "./roles.css";
+import AOS from "aos";
+
 
 function Roles() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   return (
-    <div id="main-content" className="unique-main-content">
+    <div id="main-content" className="unique-main-content" data-aos="fade-up">
       <div id="role-form">
         <h2 className="unique-h2">Role Management</h2>
         <div className="form">

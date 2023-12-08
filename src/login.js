@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { useNavigate } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 import './login.css';
 
-function Login({ onLogin }) {
+const Login = ({ onLogin }) => {
   const loginUrl = "http://172.16.0.155:8000/api/login";
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   const LoginUser = async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     localStorage.setItem("hasShownWelcomeMessage", "true");
-
 
     try {
       const response = await fetch(loginUrl, {
@@ -27,10 +28,9 @@ function Login({ onLogin }) {
         console.log("test");
         const data = await response.json();
         const token = data.access_token;
-        
 
         localStorage.setItem("token", token);
-        
+
         toast.success("Login successful!", {
           position: "top-right",
           style: {
@@ -45,10 +45,7 @@ function Login({ onLogin }) {
           },
         });
 
-        // Call the onLogin callback to update the login state in App.js
         onLogin();
-       
-        // Redirect to the home page after a successful login
         navigate("/");
       } else {
         toast.error("Login failed. Please check your credentials.", {
@@ -71,6 +68,15 @@ function Login({ onLogin }) {
       });
     }
   };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
+  
   return (
     <div>
       <ToastContainer
@@ -85,7 +91,7 @@ function Login({ onLogin }) {
         pauseOnHover
         theme="colored"
       />
-      <main className="login-box-container">
+      <main className="login-box-container" data-aos="fade-up">
         <form className="login-form-container">
           <h3 className="login-heading"><svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 256 256" fill="none" id="my-svg">
   <defs><pattern id="a" patternUnits="userSpaceOnUse" width="80" height="80" patternTransform="scale(3.19) rotate(0)"><rect x="0" y="0" width="100%" height="100%" fill="hsla(0,0%,100%,1)"/><path d="M-20.133 4.568C-13.178 4.932-6.452 7.376 0 10c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432" stroke-width="30" stroke="#FFECAF" fill="none"/><path d="M-20.133 24.568C-13.178 24.932-6.452 27.376 0 30c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432" stroke-width="30" stroke="#FFB07F" fill="none"/><path d="M-20.133 44.568C-13.178 44.932-6.452 47.376 0 50c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432" stroke-width="30" stroke="#FF52A2" fill="none"/><path d="M-20.133 64.568C-13.178 64.932-6.452 67.376 0 70c6.452 2.624 13.036 5.072 20 5 6.967-.072 13.56-2.341 20-5 6.44-2.659 13.033-4.928 20-5 6.964-.072 13.548 2.376 20 5s13.178 5.068 20.133 5.432" stroke-width="30" stroke="#F31559" fill="none"/></pattern>
@@ -128,6 +134,6 @@ function Login({ onLogin }) {
       </main>
     </div>
   );
-}
 
+  }
 export default Login;

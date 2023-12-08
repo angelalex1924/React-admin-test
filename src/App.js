@@ -10,7 +10,7 @@ import User from './user';
 import Permissions from './permissions';
 import Home from './home';
 import { ToastContainer, toast } from 'react-toastify';
-import About from './Admin/about';
+import About from './about';
 
 
 function App() {

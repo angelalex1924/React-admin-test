@@ -6,26 +6,26 @@ const Admin = () => {
     <div className="admin-container">
       <div className="admin-header">
         <h1>Welcome to the Admin Panel</h1>
-        <p>Empower your control, manage with ease.</p>
+        <p className='admin-par'>Empower your control, manage with ease.</p>
       </div>
       <div className="admin-content">
         <div className="admin-functions">
           <h2>Admin Functions:</h2>
           <div className="function-item">
             <span role="img" aria-label="shield">🛡️</span>
-            <p>Ensure the security of your system with robust authentication measures.</p>
+            <p className='admin-par'>Ensure the security of your system with robust authentication measures.</p>
           </div>
           <div className="function-item">
             <span role="img" aria-label="chart">📊</span>
-            <p>Monitor performance metrics and gain insights using advanced analytics.</p>
+            <p className='admin-par'> Monitor performance metrics and gain insights using advanced analytics.</p>
           </div>
           <div className="function-item">
             <span role="img" aria-label="user">👥</span>
-            <p>Effortlessly manage user roles and permissions for seamless access control.</p>
+            <p className='admin-par'>Effortlessly manage user roles and permissions for seamless access control.</p>
           </div>
           <div className="function-item">
             <span role="img" aria-label="calendar">📅</span>
-            <p>Schedule automated tasks and maintain a well-organized workflow.</p>
+            <p className='admin-par'>Schedule automated tasks and maintain a well-organized workflow.</p>
           </div>
         
         </div>

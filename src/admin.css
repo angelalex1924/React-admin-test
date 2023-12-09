@@ -16,7 +16,9 @@
   display: flex;
   justify-content: space-between;
 }
-
+ .admin-par{
+  color:#333;
+ }
 .admin-functions,
 .admin-users {
   flex: 1;

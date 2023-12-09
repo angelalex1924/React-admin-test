@@ -1,11 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* admin.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .unique-h2 {
   text-align: center;
-  color: #d8e2e9; /* Change the color to your preference */
-  font-size: 24px; /* Adjust the font size as needed */
-  margin-bottom: 17px; /* Add margin to separate the h2 from the form */
+  color: #d8e2e9;
+  font-size: 24px;
+  margin-bottom: 17px;
 }
+
 body {
   display: grid;
   align-items: center;
@@ -32,7 +34,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  margin: 0 10px; /* Add margin for spacing between frames */
+  margin: 0 10px;
 }
 
 .unique-frame-role:hover {
@@ -44,6 +46,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
 .label-role {
   margin-bottom: 10px;
   color: #333;
@@ -61,6 +64,7 @@ body {
   color: #495057;
   transition: box-shadow 0.3s, background-color 0.3s;
 }
+
 .input-role,
 .button-role {
   background-color: transparent;
@@ -73,11 +77,13 @@ body {
   outline: none;
   box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
 }
+
 .input-role:focus,
 .button-role:hover {
   background-color: #3498db;
   color: #ffffffb0;
 }
+
 .input-container {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
@@ -104,9 +110,10 @@ body {
   background: linear-gradient(to right, #00bcd4, #2196f3);
 }
 
-.button-show{
+.button-show {
   background: linear-gradient(to right, #08f586, #06ad91);
 }
+
 .button-delete {
   background: linear-gradient(to right, #fd0000, #db6707);
 }
@@ -122,11 +129,9 @@ body {
 }
 
 @media screen and (max-width: 1172px) {
-  .unique-h2{
-    /* width: 10%; */
-  margin-top: 5%;
+  .unique-h2 {
+    margin-top: 5%;
   }
-  /* Adjust the styling for smaller screens here */
 
   .unique-main-content {
     width: 50%;
@@ -134,17 +139,15 @@ body {
 
   .unique-frame-role {
     width: 40%;
-        margin: 20px auto; 
-        align-items: center;
-       
+    margin: 20px auto;
+    align-items: center;
   }
 
   .form {
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
     margin-left: 35%;
     margin-top: 1%;
-    
   }
 
   .button-role {

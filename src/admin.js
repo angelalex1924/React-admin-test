@@ -1,42 +1,59 @@
 import React from 'react';
 import './admin.css';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-AOS.init();
+
 const Admin = () => {
   return (
     <div className="admin-container">
-      <div className="promo-banner">
-        <h1>🚀 Welcome to the Ultimate Control Center! 🌟</h1>
-        <p>Unleash the Power of Admin Excellence with Mind-Blowing Animations!</p>
+      <div className="admin-header">
+        <h1>Welcome to the Admin Panel</h1>
+        <p>Empower your control, manage with ease.</p>
       </div>
       <div className="admin-content">
-        <div className="admin-section" data-aos="fade-up">
-          <h2>👑 Roles</h2>
-          <div className="admin-widget">
-            <p>Role: Administrator</p>
-            <p>Role: Moderator</p>
+        <div className="admin-functions">
+          <h2>Admin Functions:</h2>
+          <div className="function-item">
+            <span role="img" aria-label="shield">🛡️</span>
+            <p>Ensure the security of your system with robust authentication measures.</p>
           </div>
-        </div>
-        <div className="admin-section" data-aos="fade-up" data-aos-delay="100">
-          <h2>👤 Users</h2>
-          <div className="admin-widget">
-            <p>User: John Doe</p>
-            <p>User: Jane Smith</p>
+          <div className="function-item">
+            <span role="img" aria-label="chart">📊</span>
+            <p>Monitor performance metrics and gain insights using advanced analytics.</p>
           </div>
-        </div>
-        <div className="admin-section" data-aos="fade-up" data-aos-delay="200">
-          <h2>🛡️ Permissions</h2>
-          <div className="admin-widget">
-            <p>Total Users: 256</p>
-            <p>Active Sessions: 20</p>
+          <div className="function-item">
+            <span role="img" aria-label="user">👥</span>
+            <p>Effortlessly manage user roles and permissions for seamless access control.</p>
           </div>
+          <div className="function-item">
+            <span role="img" aria-label="calendar">📅</span>
+            <p>Schedule automated tasks and maintain a well-organized workflow.</p>
+          </div>
+        
         </div>
-      </div>
-      <div className="admin-instructions" data-aos="fade-up" data-aos-delay="300">
-        <p>🌈 Elevate Your Experience!</p>
-        <p>Explore the dynamic widgets with mesmerizing animations and unleash the true power of control.</p>
-        <p>Hover over elements for surprises and dive into a world of admin brilliance! 🌐</p>
+        <div className="admin-users">
+          <h2> Example of how to use the Admin Panel</h2>
+          <h3>User Management:</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>john_doe</td>
+                <td>john@example.com</td>
+                <td>
+                  <button className="button-role button-delete" onClick={() => alert('Delete user 1')}>Delete</button>
+                </td>
+              </tr>
+              {/* Προσθέστε περισσότερους χρήστες αν χρειάζεστε */}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

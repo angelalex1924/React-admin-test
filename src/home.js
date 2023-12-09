@@ -5,6 +5,8 @@ import './home.css';
 import { ToastContainer, toast } from "react-toastify";
 import AOS from "aos";
 import "aos/dist/aos.css";
+// import styled from 'styled-components';
+
 
 function Home({ isLoggedIn }) {
     useEffect(() => {
@@ -15,7 +17,7 @@ function Home({ isLoggedIn }) {
         });
         const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
 
-        if (isLoggedIn && !hasShownWelcomeMessage) {
+        if (isLoggedIn) {
             toast.success("Welcome back!", {
                 position: "top-right",
                 autoClose: 3000,
@@ -26,38 +28,76 @@ function Home({ isLoggedIn }) {
                 progress: undefined,
                 background: "#fff",
                 color: "#333",
+                theme:"colored",
             });
 
             localStorage.setItem("hasShownWelcomeMessage", "true");
         }
     }, [isLoggedIn]);
-
+//     const Link = styled.a`
+//     text-decoration: none;
+//   `;
     return (
         <div>
-            <ToastContainer />
-            <div id="home-landing-container" className="home-landing-container">
-                <div className="promo-banner" data-aos="fade-up">
-                    <h1>🚀 Welcome to the Ultimate Control Center! 🌟</h1>
-                    <p>Unleash the Power of Admin Excellence with Mind-Blowing Animations!</p>
-                </div>
-                <header className="welcome-message">
+        <ToastContainer />
+    <div className="home-container">
+      <div className="promo-banner">
+        <h1>🚀 Welcome to the Ultimate Control Center! 🌟</h1>
+        <p>Unleash the Power of Admin Excellence!</p>
+      </div>
+      <header className="unique-h2">
                     {!isLoggedIn && (
                         <>
                             <h2>Please Sign-In to access Administrator tools.</h2>
                         </>
                     )}
                 </header>
-                <div className="home-landing-widgets">
-                    {!isLoggedIn && (
+        {isLoggedIn && (
                         <>
-                            <Link to="/login" className="home-landing-widget" data-aos="fade-up">
+      <div className="home-content">
+        <Link style={{textDecoration: 'none'}} to="/roles" className="home-section" data-aos="fade-up">
+          <h2>👑 Roles</h2>
+          <div className="home-widget">
+            <p>Manage the Roles of your server!</p>
+            <p>select this option in order to control the Roles of the Users</p>
+          </div>
+        </Link>
+        <Link style={{textDecoration: 'none'}} to="/user" className="home-section" data-aos="fade-up" data-aos-delay="100">
+          <h2>👤 Users</h2>
+          <div className="home-widget">
+            <p>User: John Doe</p>
+            <p>User: Jane Smith</p>
+          </div>
+        </Link>
+        <Link style={{textDecoration: 'none'}} to="/permissions" className="home-section" data-aos="fade-up" data-aos-delay="200">
+          <h2>🛡️ Permissions</h2>
+          <div className="home-widget">
+            <p>Total Users: 256</p>
+            <p>Active Sessions: 20</p>
+          </div>
+        </Link>
+      </div>
+      
+      <div className="home-instructions" data-aos="fade-up" data-aos-delay="300">
+        <p>🌈 Elevate Your Experience!</p>
+        <p>Explore the dynamic widgets with mesmerizing animations and unleash the true power of control.</p>
+        <p>Hover over elements for surprises and dive into a world of admin brilliance! 🌐</p>
+      </div>
+      
+      </>
+        )}
+        <div className="home-content">
+        {!isLoggedIn && (
+                        <>
+
+                            <Link to="/login" style={{textDecoration: 'none'}} className="home-section"  data-aos="fade-up">
                                 <div className="home-landing-emoji">🔐</div>
                                 <div className="home-landing-text">
                                     <h2 className="home-landing-title">Login</h2>
                                     <p className="home-landing-description">Access your account securely</p>
                                 </div>
                             </Link>
-                            <Link to="/register" className="home-landing-widget" data-aos="fade-up">
+                            <Link to="/register" style={{textDecoration: 'none'}} className="home-section"  data-aos="fade-up">
                                 <div className="home-landing-emoji">📝</div>
                                 <div className="home-landing-text">
                                     <h2 className="home-landing-title">Register</h2>
@@ -66,44 +106,10 @@ function Home({ isLoggedIn }) {
                             </Link>
                         </>
                     )}
-                    {isLoggedIn && (
-                        <>
-                            <Link to="/user" className="home-landing-widget" data-aos="fade-up">
-                                <div className="home-landing-emoji">👤</div>
-                                <div className="home-landing-text">
-                                    <h2 className="home-landing-title">User Management</h2>
-                                    <p className="home-landing-description">Manage and view user profiles</p>
-                                </div>
-                            </Link>
-                            <Link to="/permissions" className="home-landing-widget" data-aos="fade-up">
-                                <div className="home-landing-emoji">🔒</div>
-                                <div className="home-landing-text">
-                                    <h2 className="home-landing-title">Permissions</h2>
-                                    <p className="home-landing-description">Control access rights with ease</p>
-                                </div>
-                            </Link>
-                            <Link to="/roles" className="home-landing-widget" data-aos="fade-up">
-                                <div className="home-landing-emoji">👑</div>
-                                <div className="home-landing-text">
-                                    <h2 className="home-landing-title">Roles</h2>
-                                    <p className="home-landing-description">Manage user roles</p>
-                                </div>
-                            </Link>
-                            <div className="home-landing-widget" data-aos="fade-up">
-                                <div className="home-landing-emoji">🌟</div>
-                                <div className="home-landing-text">
-                                    <h2 className="home-landing-title">Welcome to Our Platform</h2>
-                                    <p className="home-landing-description">
-                                        A place where you can explore and manage everything with ease.
-                                    </p>
-                                </div>
-                            </div>
-                        </>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-}
+                    </div>
+    </div>
+    </div>
+  );
+};
 
 export default Home;

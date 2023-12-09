@@ -54,7 +54,7 @@ function Home({ isLoggedIn }) {
                 </header>
         {isLoggedIn && (
                         <>
-      <div className="home-content">
+      <div style={{textDecoration: 'none'}} className="home-content">
         <Link style={{textDecoration: 'none'}} to="/roles" className="home-section" data-aos="fade-up">
           <h2>👑 Roles</h2>
           <div className="home-widget">

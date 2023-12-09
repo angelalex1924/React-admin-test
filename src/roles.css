@@ -47,11 +47,14 @@ body {
   justify-content: center;
 }
 
-.label-role {
+body.light-mode .label-role {
   margin-bottom: 10px;
   color: #333;
 }
-
+body.dark-mode .label-role {
+  margin-bottom: 10px;
+  color: #ffffff;
+}
 .input-role {
   padding: 12px;
   margin-bottom: 15px;
@@ -83,10 +86,22 @@ body {
   background-color: #3498db;
   color: #ffffffb0;
 }
-
-.input-container {
+body .body.light-mode .headsytle{
+  color: #000000;
+}
+body .body.light-mode .headstyle{
+  color: #ffffff;
+}
+body.light-mode .input-container {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .input-container {
+  text-align: center;
+  background-color: rgba(43, 35, 35, 0.8);
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

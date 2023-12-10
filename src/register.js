@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate, Link  } from "react-router-dom";
 import './regstyle.css';
 import AOS from "aos";
 
@@ -100,9 +101,11 @@ theme="colored"
           </div>
           <div className="register-register-container">
             <p>Already have an account?
-              <a href="#" target="_blank">
-                <span onClick={() => redirectToLogin()}> SignIn </span>
-              </a>
+            <Link style={{textDecoration: 'none'}} to="/login" >
+                <a href="#" target="_blank">
+                  <span> Login </span>
+                </a>
+                </Link>
             </p>
           </div>
         </form>

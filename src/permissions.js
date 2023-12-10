@@ -19,7 +19,7 @@ function Permissions() {
       <div className="form">
       <div className="input-container unique-frame-role">
       
-            <h3>Create a new Permission</h3>
+      <h3 className="headstyle"> Create a new Permission</h3>
             <form id="create-permission-form">
               <label htmlFor="new-permission-name" className="label-role">
                 Permission Name:
@@ -41,7 +41,7 @@ function Permissions() {
             </form>
           </div>
           <div className="input-container unique-frame-role">
-            <h3>Update Permission</h3>
+          <h3 className="headstyle"> Update Permission</h3>
             <form id="create-permission-form">
             <label htmlFor="update-role-id" className="label-role">
                 Permission ID:
@@ -74,7 +74,7 @@ function Permissions() {
           </div>
 
           <div className="input-container unique-frame-role">
-            <h3>Show Permissions</h3>
+          <h3 className="headstyle"> Show Permissions</h3>
             <form>
               <button
                 type="button"
@@ -87,7 +87,7 @@ function Permissions() {
           </div>
 
           <div className="input-container unique-frame-role">
-            <h3>Delete Permission</h3>
+          <h3 className="headstyle">Delete Permission</h3>
             <form>
               <label htmlFor="delete-role-id" className="label-role">
                 Permission ID:

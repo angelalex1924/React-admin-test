@@ -18,7 +18,7 @@ function Roles() {
         <h2 className="unique-h2">Role Management</h2>
         <div className="form">
           <div className="input-container unique-frame-role">
-            <h3 className="h3style">Create a new role</h3>
+            <h3 className='headstyle'>Create a new role</h3>
             <form>
               <label htmlFor="new-role-name" className="label-role">
                 Role Name:
@@ -41,7 +41,7 @@ function Roles() {
           </div>
 
           <div className="input-container unique-frame-role">
-            <h3 className="h3style">Update a role</h3>
+            <h3 className="headstyle">Update a role</h3>
             <form>
               <label htmlFor="update-role-id" className="label-role">
                 Role ID:
@@ -87,7 +87,7 @@ function Roles() {
           </div>
 
           <div className="input-container unique-frame-role">
-            <h3 className="h3style">Delete Role</h3>
+            <h3 className="headstyle">Delete Role</h3>
             <form>
               <label htmlFor="delete-role-id" className="label-role">
                 Role ID:

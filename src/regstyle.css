@@ -19,7 +19,7 @@
   grid-template-columns: 2fr;
   grid-template-rows: 90px 1fr;
   font-family: "Poppins", sans-serif;
-  margin-bottom: 50vh;
+  /* margin-bottom: 50vh; */
  
 }
 
@@ -32,7 +32,16 @@
   border: 2px solid rgb(50, 192, 192);
 }
 
-.register-heading {
+body.light-mode .register-heading {
+  text-align: center;
+  padding: 1rem 1rem;
+  color: #ffffff;
+  letter-spacing: 3px;
+  font-size: 30px;
+  font-style: bold;
+}
+
+body.dark-mode .register-heading {
   text-align: center;
   padding: 1rem 1rem;
   color: #ffffff;

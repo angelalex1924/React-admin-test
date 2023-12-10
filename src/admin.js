@@ -1,6 +1,7 @@
 import React from 'react';
 import './admin.css';
 
+
 const Admin = () => {
   return (
     <div className="admin-container">
@@ -31,26 +32,103 @@ const Admin = () => {
         </div>
         <div className="admin-users">
           <h2> Example of how to use the Admin Panel</h2>
-          <h3>User Management:</h3>
+          <h3>User Management (Remove Role from User):</h3>
           <table>
             <thead>
               <tr>
                 <th>User ID</th>
-                <th>Username</th>
-                <th>Email</th>
+                <th>Role ID</th>
+                <th>Action</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>  <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                placeholder='User ID'
+                required
+              /></td>
+                <td>  <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                placeholder='Role ID'
+                required
+              /></td>
+
+                <td>
+                  <button className="button-role button-delete" onClick={() => alert('Role removed successfully!')}>Remove Role</button>
+                </td>
+              </tr>
+              
+              {/* Προσθέστε περισσότερους χρήστες αν χρειάζεστε */}
+            </tbody>
+          </table>
+          <h3>Role Management(Create new Role):</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Role Name</th>
+                
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>john_doe</td>
-                <td>john@example.com</td>
                 <td>
-                  <button className="button-role button-delete" onClick={() => alert('Delete user 1')}>Delete</button>
+                <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                placeholder='New Role'
+                required
+              />
+           </td>
+                <td>
+                  <button className="button-role button-create" onClick={() => alert('Role Created!')}>Create Role</button>
                 </td>
               </tr>
-              {/* Προσθέστε περισσότερους χρήστες αν χρειάζεστε */}
+    
+            </tbody>
+          </table>
+          <h3>Permission Management(Update a Permission):</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Permission ID</th>
+                <th>New Permission Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>  <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                placeholder='Permission ID'
+                required
+              /></td>
+                <td>  <input
+                type="text"
+                id="new-permission-name"
+                name="new-permission-name"
+                className="input-role"
+                placeholder='New Permission Name'
+                required
+              /></td>
+                <td>
+                  <button className="button-role button-show" onClick={() => alert('Permission Updated successfully!')}>Update Permission</button>
+                </td>
+              </tr>
+    
             </tbody>
           </table>
         </div>

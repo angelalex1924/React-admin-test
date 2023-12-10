@@ -30,12 +30,19 @@
   padding-bottom: 5rem;
 }
 
-.login-heading {
+body.light-mode .login-heading {
   text-align: center;
   padding: 1rem 0.4rem;
   color: #f5f4f4;
   letter-spacing: 2px;
-  font-size: 30px;
+  font-size: 40px;
+}
+body.dark-mode .login-heading {
+  text-align: center;
+  padding: 1rem 0.4rem;
+  color: #f5f4f4;
+  letter-spacing: 2px;
+  font-size: 40px;
 }
 
 .login-username-container,

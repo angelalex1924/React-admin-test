@@ -76,7 +76,7 @@ theme="colored"
 />
       <main className="register-box" data-aos="fade-up">
         <form className="register-form">
-          <h3 className="register-heading">Sign Up</h3>
+          <h3 className="login-heading">Sign Up</h3>
           <div className="register-input-box">
             <input type="text" id="email" name="Email" placeholder="Email" />
             <ion-icon className="register-icon" name="mail" />
@@ -95,7 +95,7 @@ theme="colored"
             <ion-icon className="register-icon" name="person" />
           </div>
           <div className="register-buttons-container">
-            <div className="register-btn-box">
+          <div className="login-btn-box">
               <a type="button" onClick={registerUser}>Register</a>
             </div>
           </div>

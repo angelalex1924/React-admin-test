@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 .login-reset {
   box-sizing: border-box;
@@ -28,14 +29,37 @@
   box-shadow: 2px 2px 100px #00000057, -2px -2px 100px #0a022288;
   backdrop-filter: blur(3px);
   padding-bottom: 5rem;
+  -webkit-box-shadow:0px 0px 113px 12px rgba(81,255,46,0.47);
+-moz-box-shadow: 0px 0px 113px 12px rgba(81,255,46,0.47);
+box-shadow: 0px 0px 113px 12px rgba(81,255,46,0.47);
 }
 
+/* Import a modern font from Google Fonts */
+
+/* Apply the modern font to your title */
 body.light-mode .login-heading {
   text-align: center;
   padding: 1rem 0.4rem;
   color: #f5f4f4;
   letter-spacing: 2px;
   font-size: 40px;
+  font-family: 'Poppins', sans-serif; /* Use the imported font */
+  text-shadow: rgba(0, 255, 191, 1) 0px 0px 10px; /* Adjusted text shadow */
+
+  /* Add a neon sign flicker animation */
+  animation: flicker 1s infinite alternate;
+}
+
+/* Define the neon sign flicker animation keyframes */
+@keyframes flicker {
+  0% {
+    opacity: 0.5;
+    text-shadow: rgba(0, 255, 191, 1) 0px 0px 20px; /* Increased shadow size */
+  }
+  100% {
+    opacity: 1;
+    text-shadow: rgba(0, 255, 191, 1) 0px 0px 10px; /* Adjusted shadow size */
+  }
 }
 body.dark-mode .login-heading {
   text-align: center;
@@ -43,6 +67,12 @@ body.dark-mode .login-heading {
   color: #f5f4f4;
   letter-spacing: 2px;
   font-size: 40px;
+  font-family: 'Poppins', sans-serif; /* Use the imported font */
+  text-shadow: rgba(0, 255, 191, 1) 0px 0px 10px; /* Adjusted text shadow */
+
+  /* Add a neon sign flicker animation */
+  animation: flicker 1s infinite alternate;
+
 }
 
 .login-username-container,
@@ -129,28 +159,50 @@ body.dark-mode .login-heading {
   opacity: 0.8;
 }
 
-.login-btn {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  left: auto;
-}
-
 .login-btn-box a {
   padding: 0.5rem 2rem;
   border-radius: 50px;
   outline: none;
-  border-style: none;
+  border: none;
   cursor: pointer;
-  transition: all 0.5s;
-  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  background-color: #22d4bc;
   text-align: center;
-  color: #22d4bc;
+  color: #fff;
   font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-.login-btn-box-admin-container a:hover {
-  opacity: 0.8;
+.login-btn-box a:before {
+  content: "";
+  position: absolute;
+  background: #fff;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.login-btn-box a:hover:before {
+  width: 100%;
+  left: 0;
+}
+
+.login-btn-box a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  background-color: #1a9a89;
+  color: #fff;
+}
+
+.login-btn-box a:hover:before {
+  background: #1a9a89; /* Adjust to match the hover background color */
 }
 
 .login-register-container {

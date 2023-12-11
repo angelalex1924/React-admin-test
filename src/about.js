@@ -16,7 +16,7 @@ const About = () => {
   return (
     <div className="about-container">
       <div className="about-content">
-        <h1>About Us</h1>
+        <h1 className="login-heading">About Us</h1>
         <p>This page belongs to Angelos Alexopoulos.</p>
         <p className="copyright">© {new Date().getFullYear()} Angelos Alexopoulos</p>
         

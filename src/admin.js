@@ -1,5 +1,6 @@
 import React from 'react';
 import './admin.css';
+import SocialIcons from './SocialIcons';
 
 
 const Admin = () => {
@@ -133,6 +134,7 @@ const Admin = () => {
           </table>
         </div>
       </div>
+      <SocialIcons />
     </div>
   );
 };

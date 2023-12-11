@@ -14,6 +14,7 @@ import About from './about';
 
 
 
+
 function App() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,11 +46,11 @@ function App() {
     setIsLoggedIn(true);
   };
 // Access from Home
-  // const handleLogout = async () => {
-  //   const logoutUrl = "http://192.168.1.76:8000/api/logout";
+  const handleLogout = async () => {
+    const logoutUrl = "http://192.168.1.76:8000/api/logout";
 // Access from IEK
-const handleLogout = async () => {
-  const logoutUrl = "http://172.16.0.155:8000/api/logout";
+// const handleLogout = async () => {
+//   const logoutUrl = "http://172.16.0.155:8000/api/logout";
    
 
     
@@ -234,6 +235,7 @@ window.addEventListener('resize', checkWindowWidth);
         <Route path="/permissions" element={<Permissions />} />
         <Route path="/about" element={<About />} />
       </Routes>
+     
     </Router>
   );
 }

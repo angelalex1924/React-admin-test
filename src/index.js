@@ -15,9 +15,3 @@ root.render(
   </React.StrictMode>
 );
 
-ReactDOM.render(
-  <BrowserRouter basename="/React-admin-test">
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
-);

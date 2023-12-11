@@ -5,16 +5,18 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 import './login.css';
+import SocialIcons from './SocialIcons';
+
 
 // Access from Home 
-// const Login = ({ onLogin }) => {
-//   const loginUrl = "http://192.168.1.76:8000/api/login";
-//   const navigate = useNavigate();
+const Login = ({ onLogin }) => {
+  const loginUrl = "http://192.168.1.76:8000/api/login";
+  const navigate = useNavigate();
  
 // Access from IEK
-const Login = ({ onLogin }) => {
-  const loginUrl = "http://172.16.0.155:8000/api/login";
-  const navigate = useNavigate();
+// const Login = ({ onLogin }) => {
+//   const loginUrl = "http://172.16.0.155:8000/api/login";
+//   const navigate = useNavigate();
  
 
 
@@ -119,20 +121,27 @@ const Login = ({ onLogin }) => {
                   Login
                 </a>
               </div>
-            </div>
-            <div className="login-register-container">
-              <p>
-                Don't have an account?
-                <Link style={{textDecoration: 'none'}} to="/register" >
-                <a href="#" target="_blank">
-                  <span> Register</span>
-                </a>
-                </Link>
-              </p>
-            </div>
+              <div className="login-btn-box or-box">
+                <p className="or-text">OR</p>
+              </div>
+            <div className="login-btn-box google-btn-box">
+  <button href="#" className="google-btn">
+    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"/>  Sign in with Google
+  </button>
+</div>
+          </div>
+          <div className="login-register-container">
+            <p>
+              Don't have an account?
+              <Link style={{ textDecoration: 'none' }} to="/register">
+                <span> Register</span>
+              </Link>
+            </p>
+          </div>
           </div>
         </form>
       </main>
+       <SocialIcons />
     </div>
   );
 

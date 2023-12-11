@@ -114,6 +114,7 @@ th {
   background-color: #ffffff;
 }
 
+
 @media (max-width: 800px) {
   .admin-content {
     flex-direction: column; 

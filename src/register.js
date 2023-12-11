@@ -4,6 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, Link  } from "react-router-dom";
 import './regstyle.css';
 import AOS from "aos";
+import SocialIcons from './SocialIcons';
+
 
 function Register() {
   const registerURL = "http://192.168.1.76:8000/api/register";
@@ -77,28 +79,37 @@ theme="colored"
       <main className="register-box" data-aos="fade-up">
         <form className="register-form">
           <h3 className="login-heading">Sign Up</h3>
-          <div className="register-input-box">
+          <div className="login-username-container">
             <input type="text" id="email" name="Email" placeholder="Email" />
             <ion-icon className="register-icon" name="mail" />
           </div>
           
-          <div className="register-input-box">
+          <div className="login-username-container">
             <input type="password" id="password" name="Password" placeholder="Enter your Password" />
             <ion-icon className="register-icon" name="lock-closed" />
           </div>
-          <div className="register-input-box">
+          <div className="login-username-container">
             <input type="password" id="password_confirmation" name="Password Confirmation" placeholder="Repeat Password" />
             <ion-icon className="register-icon" name="lock-closed" />
           </div>
-          <div className="register-input-box">
+          <div className="login-username-container">
             <input type="text" id="name" name="Name" placeholder="Name" />
             <ion-icon className="register-icon" name="person" />
           </div>
           <div className="register-buttons-container">
-          <div className="login-btn-box">
+          <div className="register-btn-box">
               <a type="button" onClick={registerUser}>Register</a>
-            </div>
+            </div> 
           </div>
+          <div className="login-btn-box or-box">
+                <p className="or-text">OR</p>
+              </div>
+          <div className="login-btn-box google-btn-box">
+  <button href="#" className="google-btn">
+    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"/>  Sign Up with Google
+  </button>
+</div>
+          
           <div className="register-register-container">
             <p>Already have an account?
             <Link style={{textDecoration: 'none'}} to="/login" >
@@ -110,6 +121,7 @@ theme="colored"
           </div>
         </form>
       </main>
+      <SocialIcons />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import AOS from "aos";
 import "./permission.css";
 import React, { useEffect } from "react";
+import SocialIcons from './SocialIcons';
 
 
 function User() {
@@ -110,6 +111,7 @@ function User() {
           </div>
         </div>
       </div>
+      <SocialIcons />
       </div>
    
       

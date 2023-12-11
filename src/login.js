@@ -7,14 +7,14 @@ import "react-toastify/dist/ReactToastify.css";
 import './login.css';
 
 // Access from Home 
-const Login = ({ onLogin }) => {
-  const loginUrl = "http://192.168.1.76:8000/api/login";
-  const navigate = useNavigate();
- 
-//Access from IEK
 // const Login = ({ onLogin }) => {
-//   const loginUrl = "http://172.16.0.155:8000/api/login";
+//   const loginUrl = "http://192.168.1.76:8000/api/login";
 //   const navigate = useNavigate();
+ 
+// Access from IEK
+const Login = ({ onLogin }) => {
+  const loginUrl = "http://172.16.0.155:8000/api/login";
+  const navigate = useNavigate();
  
 
 

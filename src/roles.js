@@ -32,7 +32,7 @@ function Roles() {
               />
               <button
                 type="button"
-                onClick={() => createRole()}
+                // onClick={() => createRole()}
                 className="button-role button-create"
               >
                 <span>Create Role</span>
@@ -65,7 +65,7 @@ function Roles() {
               />
               <button
                 type="button"
-                onClick={() => updateRole()}
+                // onClick={() => updateRole()}
                 className="button-role button-update"
               >
                 <span>Update Role</span>
@@ -78,7 +78,7 @@ function Roles() {
             <form>
               <button
                 type="button"
-                onClick={() => showRoles()}
+                // onClick={() => showRoles()}
                 className="button-role button-show"
               >
                 <span>Show Roles</span>
@@ -101,7 +101,7 @@ function Roles() {
               />
               <button
                 type="button"
-                onClick={() => deleteRole()}
+                // onClick={() => deleteRole()}
                 className="button-role button-delete"
               >
                 <span>Delete Role</span>

@@ -34,7 +34,7 @@ function Permissions() {
               <button
                 type="button"
                 className="button-role button-create"
-                onClick={() => createPermission()}
+                // onClick={() => createPermission()}
               >
                <span>Create Permission</span>
               </button>
@@ -66,7 +66,7 @@ function Permissions() {
               <button
                 type="button"
                 className="button-role button-update"
-                onClick={() => updatePermission()}
+                // onClick={() => updatePermission()}
               >
                 Update Permission
               </button>
@@ -78,7 +78,7 @@ function Permissions() {
             <form>
               <button
                 type="button"
-                onClick={() => showPermissions()}
+                // onClick={() => showPermissions()}
                 className="button-role button-show"
               >
                 <span>Show Permissions</span>
@@ -101,7 +101,7 @@ function Permissions() {
               />
               <button
                 type="button"
-                onClick={() => deleteRole()}
+                // onClick={() => deleteRole()}
                 className="button-role button-delete"
               >
                 <span>Delete Permission</span>

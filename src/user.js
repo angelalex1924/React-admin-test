@@ -45,7 +45,7 @@ function User() {
               <button
                 type="button"
                 className="button-role button-create"
-                onClick={() => createPermission()}
+                // onClick={() => createPermission()}
               >
                <span>Assign Role</span>
               </button>
@@ -68,7 +68,7 @@ function User() {
               />
               <button
                 type="button"
-                onClick={() => showPermissions()}
+                // onClick={() => showPermissions()}
                 className="button-role button-show"
               >
                 <span>Show Roles</span>
@@ -101,7 +101,7 @@ function User() {
               />
               <button
                 type="button"
-                onClick={() => deleteRole()}
+                // onClick={() => deleteRole()}
                 className="button-role button-delete"
               >
                 <span>Remove Role</span>

@@ -112,7 +112,6 @@ function Roles() {
           </div>
         </div>
       </div>
-      <SocialIcons />
     </div>
   );
 }

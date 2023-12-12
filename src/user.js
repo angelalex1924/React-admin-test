@@ -111,7 +111,6 @@ function User() {
           </div>
         </div>
       </div>
-      <SocialIcons />
       </div>
    
       

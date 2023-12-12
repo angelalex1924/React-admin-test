@@ -1,11 +1,7 @@
 {
   "name": "quizformreact",
   "version": "0.1.0",
-<<<<<<< HEAD
   "homepage": "http://angelalex.ddns.net",
-=======
-  "homepage": "http://angelalex.ddns.net/",
->>>>>>> 467d453ead6e4a577ed581a8bcf5b1500123f0f0
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
@@ -40,10 +36,6 @@
     "electron-start": "electron .",
     "electron-build": "electron-packager . main.js",
     "build:css": "tailwindcss build src/styles/tailwind.css -o src/styles/index.css"
-<<<<<<< HEAD
-=======
-
->>>>>>> 467d453ead6e4a577ed581a8bcf5b1500123f0f0
   },
   "eslintConfig": {
     "extends": [

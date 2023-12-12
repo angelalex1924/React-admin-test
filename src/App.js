@@ -48,11 +48,11 @@ function App() {
     setIsLoggedIn(true);
   };
 // Access from Home
-  const handleLogout = async () => {
-    const logoutUrl = "http://192.168.1.76:8000/api/logout";
+  // const handleLogout = async () => {
+  //   const logoutUrl = "http://192.168.1.76:8000/api/logout";
 // Access from IEK
-// const handleLogout = async () => {
-//   const logoutUrl = "http://172.16.0.155:8000/api/logout";
+const handleLogout = async () => {
+  const logoutUrl = "http://172.16.0.155:8000/api/logout";
    
 
     
@@ -231,13 +231,13 @@ window.addEventListener('resize', checkWindowWidth);
               </Link>
             <li>
               {isLoggedIn ? (
-                <div class="logout-btn-box">
+  
                 
               
                 <button className="logout-button" onClick={handleLogout}><svg width="18" height="18" viewBox="0 0 24 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <circle cx="9" cy="7" r="3" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M11 13H7C4.79086 13 3 14.7909 3 17C3 18.6569 4.34315 20 6 20H12C13.6569 20 15 18.6569 15 17C15 14.7909 13.2091 13 11 13Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M15.7751 9.25L20.7249 9.25M20.7249 9.25L19 7.5M20.7249 9.25L19 10.9749" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
                   <span className="logout-text"> Logout</span>
                 </button>
-                </div>
+             
               ) : null}
             </li>
             

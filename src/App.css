@@ -281,10 +281,12 @@ body.dark-mode .nav-links a:active {
 
 /* Dropdown styles */
 .admin-dropdown {
+
   position: relative;
   display: inline-block;
   transition: all 0.3s ease; /* Add transition for smooth animation */
 }
+
 .admin-dropdown .dropbtn {
   background-color: transparent;
   color: #f7f8f6;
@@ -312,17 +314,61 @@ body.dark-mode .admin-dropdown .dropbtn:active {
   background-color: #33fd00;
   color: #011f0d;
 }
+.admin-dropdown-content {
+  position: relative;
+}
+
+.arrow-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow {
+  color: #fff;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+
+.admin-dropdown-content {
+  position: relative;
+  margin-top: 14px; /* Προσαρμόστε την τιμή όπως επιθυμείτε */
+
+}
+
+body.light-mode .arrow {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  display: inline-block;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #2AF598; /* Χρώμα που ταιριάζει με το υπόλοιπο περιεχόμενο */
+  border-left: 10px solid transparent;
+  border-bottom-color: rgb(#2AF598);
+  content: '';
+  margin-left: 10px;
+}
+body.dark-mode .arrow {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  display: inline-block;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #521eb1; /* Χρώμα που ταιριάζει με το υπόλοιπο περιεχόμενο */
+  border-left: 10px solid transparent;
+  border-bottom-color: rgb(#521eb1);
+  content: '';
+  margin-left: 10px;
+}
+
 
 body.light-mode .admin-dropdown-content {
   display: none;
   position: absolute;
   background-color: #08AEEA;
 background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
-
-  
-  
-  
-  
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -429,12 +475,17 @@ body.dark-mode .nav-links.open {
   text-decoration: none; /* Make sure the link is not underlined */
 }
 
-.logout-button:hover,
+/* .logout-button:hover,
 .logout-button:active {
   background-color: #ff2222;
   color: #ffffff;
+} */
+.logout-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  background-color: #e90606;
+  color: #fff;
 }
-
 /* If you want to apply different styles to the text in normal and hover states, you can use a separate class for the text */
 
 .logout-text {

@@ -10,6 +10,8 @@ import User from './user';
 import Permissions from './permissions';
 import Home from './home';
 import { ToastContainer, toast } from 'react-toastify';
+import Quiz from './quiz';
+
 import About from './about';
 
 
@@ -109,6 +111,11 @@ const handleLogout = async () => {
       });
     }
   };
+  const [isQuizDropdownOpen, setIsQuizDropdownOpen] = useState(false);
+  const toggleQuizDropdown = () => {
+    setIsQuizDropdownOpen(!isQuizDropdownOpen);
+  };
+  
 
     const toggleDropdown = () => {
       setIsDropdownOpen(!isDropdownOpen);
@@ -183,18 +190,38 @@ window.addEventListener('resize', checkWindowWidth);
             ) : null}
             <li className="nav-item">
             {isLoggedIn ? (
+              
               <div className="admin-dropdown">
+
                 <Link to="/admin" className="dropbtn" onClick={handleNavLinkClick}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16"> <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/> <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/> </svg>                 {"  "}  Admin
                 </Link>
                 <div className="admin-dropdown-content">
+                <div class="arrow"></div>
                   <Link to="/roles" onClick={handleNavLinkClick}><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="12" viewBox="0 0 20 20"> <g> <path fill="none" d="M0 0h24v24H0z"/> <path d="M2.8 5.2L7 8l4.186-5.86a1 1 0 0 1 1.628 0L17 8l4.2-2.8a1 1 0 0 1 1.547.95l-1.643 13.967a1 1 0 0 1-.993.883H3.889a1 1 0 0 1-.993-.883L1.253 6.149A1 1 0 0 1 2.8 5.2zM12 15a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/> </g> </svg>Roles</Link>
                   <Link to="/permissions" onClick={handleNavLinkClick}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-shaded" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M8 14.933a.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067v13.866zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/> </svg>Permissions</Link>
                   <Link to="/user" onClick={handleNavLinkClick}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"> <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/> </svg>User</Link>
                 </div>
               </div>
+              
               ) : null}
+              
+            
+
+              
             </li>
+            {isLoggedIn ? (
+              <div className="admin-dropdown">
+            <Link to="/quiz" onClick={handleNavLinkClick}>
+              <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512" fill="currentColor" class="bi bi-speedometer"><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm64 64v64h64V96h64v64h64V96h64v64H320v64h64v64H320v64h64v64H320V352H256v64H192V352H128v64H64V352h64V288H64V224h64V160H64V96h64zm64 128h64V160H192v64zm0 64V224H128v64h64zm64 0H192v64h64V288zm0 0h64V224H256v64z"/></svg>{" "}
+                Quiz
+              </Link>
+              <div className="admin-dropdown-content">
+                <div class="arrow"></div>
+                <Link to="/questions" onClick={handleNavLinkClick}><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-speedometer" height="16" width="16" viewBox="0 0 512 512"> <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>Questions</Link>
+              </div>
+              </div>
+               ) : null}
             <Link to="/about" onClick={handleNavLinkClick}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer" viewBox="0 0 16 16">
   <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
@@ -203,11 +230,16 @@ window.addEventListener('resize', checkWindowWidth);
               </Link>
             <li>
               {isLoggedIn ? (
+                <div class="logout-btn-box">
+                
+              
                 <button className="logout-button" onClick={handleLogout}><svg width="18" height="18" viewBox="0 0 24 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"> <circle cx="9" cy="7" r="3" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M11 13H7C4.79086 13 3 14.7909 3 17C3 18.6569 4.34315 20 6 20H12C13.6569 20 15 18.6569 15 17C15 14.7909 13.2091 13 11 13Z" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M15.7751 9.25L20.7249 9.25M20.7249 9.25L19 7.5M20.7249 9.25L19 10.9749" stroke="#333333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </svg>
                   <span className="logout-text"> Logout</span>
                 </button>
+                </div>
               ) : null}
             </li>
+            
             <input
           type="checkbox"
           id="dark-mode-toggle"
@@ -232,8 +264,10 @@ window.addEventListener('resize', checkWindowWidth);
           element={isLoggedIn ? <Roles /> : <Navigate to="/login" />}
         />
         <Route path="/permissions" element={<Permissions />} />
+        <Route path="/quiz" element={<Quiz />} />
         <Route path="/about" element={<About />} />
       </Routes>
+     
     </Router>
   );
 }

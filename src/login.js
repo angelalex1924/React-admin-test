@@ -5,6 +5,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "react-toastify/dist/ReactToastify.css";
 import './login.css';
+import SocialIcons from './SocialIcons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+
+
 
 // Access from Home 
 // const Login = ({ onLogin }) => {
@@ -101,38 +106,49 @@ const Login = ({ onLogin }) => {
         pauseOnHover
         theme="colored"
       />
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
+
       <main className="login-box-container" data-aos="fade-up">
         <form className="login-form-container">
-          <h3 className="login-heading"><svg width="40px" height="40px" viewBox="0 0 20.00 24.00" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 3H5C3.89543 3 3 3.89543 3 5V7" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 3H19C20.1046 3 21 3.89543 21 5V7" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16 8L16 10" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8 8L8 10" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 16C9 16 10 17 12 17C14 17 15 16 15 16" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 8L12 13L11 13" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 21H5C3.89543 21 3 20.1046 3 19V17" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 21H19C20.1046 21 21 20.1046 21 19V17" stroke="#000000" stroke-width="1.608" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg> Login</h3>
+          <h3 className="login-heading">Login</h3>
           <div className="login-forms">
-            <div className="login-username-container">
-              <input type="text" id="email" name="Username" placeholder="Email" />
-              <ion-icon className="login-icon" name="person" />
-            </div>
-            <div className="login-password-container">
-              <input type="password" id="password" name="Password" placeholder="Password" />
-              <ion-icon className="login-icon" name="lock-closed" />
-            </div>
+          <div className="login-username-container">
+  <input type="text" id="email" name="Username" placeholder="Email" />
+</div>
+
+<div className="login-password-container">
+
+  <input type="password" id="password" name="Password" placeholder="Password" />
+</div>
             <div className="login-buttons-container">
               <div className="login-btn-box">
                 <a href="#" type="button" onClick={LoginUser}>
                   Login
                 </a>
               </div>
-            </div>
-            <div className="login-register-container">
-              <p>
-                Don't have an account?
-                <Link style={{textDecoration: 'none'}} to="/register" >
-                <a href="#" target="_blank">
-                  <span> Register</span>
-                </a>
-                </Link>
-              </p>
-            </div>
+              <div className="or-box">
+  <div className="or-line"></div>
+  <p className="or-text">OR</p>
+  <div className="or-line"></div>
+</div>
+            <div className="login-btn-box google-btn-box">
+  <button href="#" className="google-btn">
+    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google Logo"/>  Sign in with Google
+  </button>
+</div>
+          </div>
+          <div className="login-register-container">
+            <p>
+              Don't have an account?
+              <Link style={{ textDecoration: 'none' }} to="/register">
+                <span> Register</span>
+              </Link>
+            </p>
+          </div>
           </div>
         </form>
       </main>
+       <SocialIcons />
     </div>
   );
 

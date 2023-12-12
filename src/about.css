@@ -18,6 +18,7 @@
 h1 {
   color: #ece5e4;
   font-size: 2.5em;
+  margin-bottom: 20px; /* Προστέθηκε περιθώριο κάτω από τον τίτλο */
 }
 
 p {
@@ -33,24 +34,63 @@ p {
   color: #ffffff;
 }
 
-.social-icons {
-  margin-top: 30px;
+.social-icons-container {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  justify-content: center; /* Προστέθηκε για να ευθυγραμμίσει τα εικονίδια στο κέντρο */
 }
 
-.social-icons a {
-  margin: 0 15px;
+.social-icon-item a {
   text-decoration: none;
-  color: #ffffff;
-  display: inline-block;
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: hsl(203, 92%, 97%);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  border: 3px solid hsl(203, 92%, 97%);
+  overflow: hidden;
 }
 
-.social-icons img {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+.social-icon-item a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  z-index: 0;
+  scale: 1 0;
+  transform-origin: bottom;
+  transition: scale 0.5s ease;
 }
 
-.social-icons img:hover {
-  transform: scale(1.2);
-  color: #ffcc00;
+.social-icon-item:hover a::before {
+  scale: 1 1;
+}
+
+.social-icon {
+  font-size: 2rem;
+  color: hsl(203, 92%, 8%);
+  transition: 0.5s ease;
+  z-index: 2;
+}
+
+.social-icon-item a:hover .social-icon {
+  color: #fff;
+  transform: rotateY(360deg);
+}
+
+/* Define unique background colors for each social icon */
+.social-icon-item:nth-child(1) {
+  --bg-color: linear-gradient(to bottom right, #f9ce34, #ee2a7b, #6228d7);
+}
+.social-icon-item:nth-child(2) {
+  --bg-color: #0077b5;
+}
+.social-icon-item:nth-child(3) {
+  --bg-color: #000;
 }

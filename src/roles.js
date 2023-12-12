@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import "./roles.css";
 import AOS from "aos";
+import SocialIcons from './SocialIcons';
+
 
 
 function Roles() {

@@ -5,6 +5,8 @@ import './home.css';
 import { ToastContainer, toast } from "react-toastify";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SocialIcons from './SocialIcons';
+
 // import styled from 'styled-components';
 
 
@@ -108,6 +110,7 @@ function Home({ isLoggedIn }) {
                     )}
                     </div>
     </div>
+    <SocialIcons />
     </div>
   );
 };

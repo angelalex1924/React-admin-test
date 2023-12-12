@@ -19,11 +19,19 @@
   grid-template-columns: 2fr;
   grid-template-rows: 90px 1fr;
   font-family: "Poppins", sans-serif;
+<<<<<<< HEAD
   margin-bottom: 150%;
 }
 
 .register-form {
 /*margin-bottom: 200%;*/
+=======
+  margin-bottom: 30vh;
+ 
+}
+
+.register-form {
+>>>>>>> 467d453ead6e4a577ed581a8bcf5b1500123f0f0
   width: 450px;
   height: 650px;
   border-radius: 20px;

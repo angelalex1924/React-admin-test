@@ -111,6 +111,7 @@ function Permissions() {
           </div>
         </div>
       </div>
+      <SocialIcons />
       </div>
    
       

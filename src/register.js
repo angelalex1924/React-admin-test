@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate, Link  } from "react-router-dom";
-import './regstyle.css';
+import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
 import AOS from "aos";
+import "aos/dist/aos.css";
+import './regstyle.css';
 import SocialIcons from './SocialIcons';
-
+import ErrorNotification from './ErrorNotification';
+import RegisterNotification from './RegisterNotification';
 
 function Register() {
+  const [errorOccurred, setErrorOccurred] = useState(false);
+  const [registrationSuccessful, setRegistrationSuccessful] = useState(false);
+  const navigate = useNavigate();
   const registerURL = "http://192.168.1.76:8000/api/register";
 
   const registerUser = async () => {
@@ -26,6 +30,9 @@ function Register() {
       });
 
       if (response.ok) {
+        setErrorOccurred(false); // Reset the error state
+        setRegistrationSuccessful(true); // Set registration successful state
+
         toast.success("You have successfully registered", {
           position: "top-right",
           style: {
@@ -34,26 +41,14 @@ function Register() {
           },
         });
       } else {
-        toast.error("Registration failed.", {
-          position: "top-right",
-          style: {
-            background: "#FF0000",
-            color: "#fff", // Red background color
-          },
-        });
+        setErrorOccurred(true);
       }
     } catch (error) {
       console.error("Error during Register:", error);
-      toast.error("An error occurred during Register. Please try again.", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 3000,
-        style: {
-          background: "#FF0000",
-          color: "#fff",  // Red background color
-        },
-      });
+      setErrorOccurred(true);
     }
   };
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -64,18 +59,9 @@ function Register() {
 
   return (
     <div>
-      <ToastContainer
-position="top-right"
-autoClose={3000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="colored"
-/>
+    
+      {errorOccurred && <ErrorNotification message="An error occurred during registration. Please try again." />}
+      {registrationSuccessful && <RegisterNotification message="You have successfully registered." />}
       <main className="register-box" data-aos="fade-up">
         <form className="register-form">
           <h3 className="login-heading">Sign Up</h3>

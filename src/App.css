@@ -58,7 +58,7 @@ body.light-mode .section-dropdown {
 }
 
 /* Κλάση για το Light Mode μόνο στο dropdown υποσέλιδο */
-.body.light-mode .section-dropdown-sub {
+body.light-mode .section-dropdown-sub {
   background-color: #111; /* Αλλάξτε το χρώμα του υποσέλιδου dropdown για το Light Mode */
   color: #fff; /* Αλλάξτε το χρώμα κειμένου για το Light Mode */
 }
@@ -181,6 +181,8 @@ body.dark-mode .line {
   display: flex;
   gap: 15px;
   margin-left: auto;
+  animation: fadeInNavLinks 0.9s ease;
+
 }
 @keyframes fadeInNavLinks {
   from {
@@ -194,7 +196,7 @@ body.dark-mode .line {
 }
 
 /* Apply the animation to the dropdown */
-.body .nav-links.open {
+body .nav-links.open {
   animation: fadeInNavLinks 0.9s ease;
   flex-direction: column;
   align-items: flex-start;
@@ -207,12 +209,12 @@ body.dark-mode .line {
   background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
   border-radius: 5px;
 }
-.body.dark-mode .nav-links.open {
+/* body.dark-mode .nav-links.open {
   background-color: #17546d;
-}
+} */
 
-.body.dark-mode .nav-links.open {
-  animation: fadeIn 0.3s ease;
+body.dark-mode .nav-links.open {
+  animation: fadeInNavLinks 0.9s ease;
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
@@ -229,6 +231,8 @@ body.dark-mode .line {
 
 body.light-mode .nav-links a {
   text-decoration: none;
+  animation: fadeInNavLinks 0.9s ease;
+
   color: #fdfbfa;
   border: 2px solid transparent;
   border-radius: 30px;
@@ -241,6 +245,8 @@ body.light-mode .nav-links a {
     text-decoration: none; /* Remove underline */
 }
 body.dark-mode .nav-links a {
+  animation: fadeInNavLinks 0.9s ease;
+
   text-decoration: none;
   color: #ffffff;
   border: 2px solid transparent;
@@ -333,6 +339,8 @@ body.dark-mode .admin-dropdown .dropbtn:active {
 
 
 .admin-dropdown-content {
+  animation: fadeInNavLinks 0.9s ease;
+
   position: relative;
   margin-top: 14px; /* Προσαρμόστε την τιμή όπως επιθυμείτε */
 
@@ -439,12 +447,12 @@ body.light-mode .nav-links.open {
   left: 0;
   width: 100%;
   height: 500px;
- 
   background-color: #08AEEA;
   background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);  
   border-radius: 5px; /* Adjust the value to your preference */
 }
 body.dark-mode .nav-links.open {
+  animation: fadeInNavLinks 0.9s ease;
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
@@ -454,6 +462,7 @@ body.dark-mode .nav-links.open {
   height: 500px;
   background-image: linear-gradient(to right top, #051937, #072561, #2b2d8a, #5c2caf, #9413cd);
   border-radius: 5px; /* Adjust the value to your preference */
+
 }
 
 
@@ -620,6 +629,7 @@ body.dark-mode .nav-links.open {
   }
 
   .nav-links {
+    
     display: none;
     position: absolute;
     top: 60px;
@@ -636,6 +646,8 @@ body.dark-mode .nav-links.open {
   }
 
   .admin-dropdown .dropdown-content {
+    animation: fadeInNavLinks 0.9s ease;
+
     border-radius: 0;
   }
 

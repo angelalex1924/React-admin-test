@@ -1,6 +1,6 @@
 // Permissions.js
 import React, { useEffect } from "react";
-import "./permission.css";
+ import './permission.css';
 import AOS from "aos";
 import SocialIcons from './SocialIcons';
 

@@ -56,11 +56,9 @@ import ToastNotification from './ToastNotification';
       setShowWelcomeMessage(true);
     };
   // Access from Home
-  // const handleLogout = async () => {
-  //   const logoutUrl = "http://192.168.1.76:8000/api/logout";
-// Access from IEK
-    const handleLogout = async () => {
-      const logoutUrl = "http://172.16.0.155:8000/api/logout";
+  const handleLogout = async () => {
+    const logoutUrl = "http://192.168.1.76:8000/api/logout";
+  //const logoutUrl = "http://172.16.0.155:8000/api/logout";
   
       try {
         const response = await fetch(logoutUrl, {

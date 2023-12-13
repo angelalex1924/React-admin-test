@@ -30,7 +30,10 @@ function App() {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
       });
-
+      // Access from IEK
+      // const Login = ({ onLogin }) => {
+      //   const loginUrl = "http://172.16.0.155:8000/api/login";
+      //   const navigate = useNavigate();
       if (response.ok) {
         localStorage.removeItem("token");
         console.log("Logout successful");

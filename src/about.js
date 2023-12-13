@@ -2,11 +2,21 @@
 
 import './SocialIcons.css';
 import './about.css';
-import React from 'react';
+import AOS from "aos";
+import React, { useEffect } from "react";
+
+
 
 const About = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
+  }, []);
   return (
-    <div className="about-container">
+    <div className="about-container" data-aos="fade-up">
       <div className="about-content">
         <h1 className="login-heading">About Us</h1>
         <p>This page belongs to Angelos Alexopoulos.</p>

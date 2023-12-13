@@ -1,47 +1,36 @@
-// home.js
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import './home.css';
-import { ToastContainer, toast } from "react-toastify";
+import ToastNotification from './ToastNotification';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SocialIcons from './SocialIcons';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-// import styled from 'styled-components';
+function Home({ isLoggedIn  }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out",
+    });
 
+    const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
 
-function Home({ isLoggedIn }) {
-    useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            once: true,
-            easing: "ease-out",
-        });
-        const hasShownWelcomeMessage = localStorage.getItem("hasShownWelcomeMessage");
+    if (isLoggedIn && !hasShownWelcomeMessage) {
+      // Optionally, you can trigger your custom notification here
+      // For simplicity, let's use a console log
+      console.log("Custom notification: Welcome back!");
 
-        if (isLoggedIn) {
-            toast.success("Welcome back!", {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                background: "#fff",
-                color: "#333",
-                theme:"colored",
-            });
-
-            localStorage.setItem("hasShownWelcomeMessage", "true");
-        }
-    }, [isLoggedIn]);
-//     const Link = styled.a`
-//     text-decoration: none;
-//   `;
+      // Save the flag to localStorage
+      localStorage.setItem("hasShownWelcomeMessage", "true");
+    }
+  }, [isLoggedIn]);
     return (
         <div>
-        <ToastContainer />
+              {/* <ToastNotification /> */}
+
     <div className="home-container">
       <div className="promo-banner">
         <h1>🚀 Welcome to the Ultimate Control Center! 🌟</h1>

@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom';
 function Quiz() {
     const [showModal, setShowModal] = useState(false);
     const [quizzesData, setquizzesData] = useState([]);
-
+    const [newQuizTitle, setNewQuizTitle] = useState(''); // Add state for newQuizTitle
+    const user_id = 1; // Replace with the actual user ID
     // Define handleOpenModal function to open the modal
     const handleOpenModal = () => {
         setShowModal(true);
@@ -21,7 +22,7 @@ function Quiz() {
         const fetchData = async () => {
           try {
             const response = await axios.get('http://172.16.0.155:8000/api/questions');
-            setQuestions(response.data);
+            setNewQuizTitle(response.data);
           } catch (error) {
             console.error('Error fetching questions:', error);
           }
@@ -55,7 +56,7 @@ function Quiz() {
                 {/* Content for your modal */}
                 <h2>Add new Quiz</h2>
             </Modal>
-            <div className='line'></div>
+            <div className='line-quiz'></div>
             <div className='listofquizzes'>
                 {quizzesData.map((quiz, index) => (
                     <div key={index}>

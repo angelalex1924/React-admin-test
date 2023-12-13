@@ -11,114 +11,110 @@ import Permissions from './permissions';
 import Home from './home';
 import { ToastContainer, toast } from 'react-toastify';
 import Quiz from './quiz';
+import LogoutNotification from './LogoutNotification';
 
 import About from './about';
+import ToastNotification from './ToastNotification';
 
 
 
 
-function App() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  function App() {
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [showLogoutNotification, setShowLogoutNotification] = useState(false);
+    const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
+    const [showCustomNotification, setShowCustomNotification] = useState(false);
+
+    const handleWelcomeMessage = () => {
+      setShowCustomNotification(true);
+    };
+    useEffect(() => {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        setIsLoggedIn(true);
+      }
+    }, []);
   
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    if (storedToken) {
+    useEffect(() => {
+      const storedDarkMode = localStorage.getItem('darkMode');
+      if (storedDarkMode) {
+        setIsDarkMode(storedDarkMode === 'true');
+      }
+    }, []);
+  
+    useEffect(() => {
+      localStorage.setItem('darkMode', isDarkMode.toString());
+      const body = document.body;
+      body.classList.toggle('dark-mode', isDarkMode);
+      body.classList.toggle('light-mode', !isDarkMode);
+    }, [isDarkMode]);
+  
+    const handleLogin = () => {
       setIsLoggedIn(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    const storedDarkMode = localStorage.getItem('darkMode');
-    if (storedDarkMode) {
-      setIsDarkMode(storedDarkMode === 'true');
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('darkMode', isDarkMode.toString());
-    const body = document.body;
-    body.classList.toggle('dark-mode', isDarkMode);
-    body.classList.toggle('light-mode', !isDarkMode);
-  }, [isDarkMode]);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-// Access from Home
+      setShowWelcomeMessage(true);
+    };
+  // Access from Home
   // const handleLogout = async () => {
   //   const logoutUrl = "http://192.168.1.76:8000/api/logout";
 // Access from IEK
-const handleLogout = async () => {
-  const logoutUrl = "http://172.16.0.155:8000/api/logout";
-   
-
-    
-    try {
-      const response = await fetch(logoutUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`
-
-
-        },
-      });
-
-      if (response.ok) {
-        localStorage.removeItem("token");
-        console.log("Logout successful");
-        toast("👌 You have logged out!", {
-          position: "top-right",
-          style: {
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            background: "#fff",
-            color: "#333",
-          },
-        });
-        setIsLoggedIn(false);
-        
-      } else {
-        toast.info("👌 You have logged out!", {
-          position: "top-right",
-          style: {
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            background: "linear-gradient(to bottom right, #03ea5a, #c1b408, #8cff00)",
-            color: "#fff",
-          },
-        });
-      }
-    } catch (error) {
-      console.error("API is Offline!", error);
-      toast.error("API is Offline!.", {
-        position: toast.POSITION.TOP_RIGHT,
-        autoClose: 3000,
-        style: {
-          background: "#FF0000",
-          color: "#fff",
-        },
-      });
-    }
-  };
-  const [isQuizDropdownOpen, setIsQuizDropdownOpen] = useState(false);
-  const toggleQuizDropdown = () => {
-    setIsQuizDropdownOpen(!isQuizDropdownOpen);
-  };
+    const handleLogout = async () => {
+      const logoutUrl = "http://172.16.0.155:8000/api/logout";
   
-
+      try {
+        const response = await fetch(logoutUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+          },
+        });
+  
+        if (response.ok) {
+          localStorage.removeItem("token");
+          console.log("Logout successful");
+          setShowLogoutNotification(true);
+          setIsLoggedIn(false);
+  
+          setTimeout(() => {
+            setShowLogoutNotification(false);
+          }, 3000);
+        } else {
+          console.error("Logout failed");
+        }
+      } catch (error) {
+        console.error("API is Offline!", error);
+      }
+    };
+  
+    useEffect(() => {
+      if (isLoggedIn && showWelcomeMessage) {
+        toast.success("Welcome back!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          background: "#fff",
+          color: "#333",
+          theme: "colored",
+        });
+    
+        localStorage.setItem("hasShownWelcomeMessage", "true");
+        // Update the state to prevent showing the welcome message again
+        setShowWelcomeMessage(false);
+      }
+    }, [isLoggedIn, showWelcomeMessage]);
+    
+    const [isQuizDropdownOpen, setIsQuizDropdownOpen] = useState(false);
+    const toggleQuizDropdown = () => {
+      setIsQuizDropdownOpen(!isQuizDropdownOpen);
+    }
     const toggleDropdown = () => {
+      console.log('Toggle dropdown');
       setIsDropdownOpen(!isDropdownOpen);
     };
     
@@ -147,8 +143,7 @@ window.addEventListener('resize', checkWindowWidth);
       <nav className="navbar">
   
         <div className="navlist">
-        <div className={`menu-icon ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>
-        <div className="bar">
+        <div className={`menu-icon ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>        <div className="bar">
               <div className="line line1"></div>
               <div className="line line2"></div>
               <div className="line line3"></div>
@@ -254,8 +249,9 @@ window.addEventListener('resize', checkWindowWidth);
         </div>
       </nav>
       <Routes>
-        <Route  path="/"
-                element= {<Home isLoggedIn={isLoggedIn}/>}  />
+      <Route path="/"
+          element={<Home isLoggedIn={isLoggedIn} showWelcomeMessage={showWelcomeMessage} />}
+        />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route path="/admin" element={<Admin />} />
@@ -268,7 +264,9 @@ window.addEventListener('resize', checkWindowWidth);
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/about" element={<About />} />
       </Routes>
-     
+      {showLogoutNotification && <LogoutNotification />}
+      {isLoggedIn && <ToastNotification /> }
+
     </Router>
   );
 }

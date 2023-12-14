@@ -31,6 +31,7 @@ import ToastNotification from './ToastNotification';
     const [showWelcomeMessage, setShowWelcomeMessage] = useState(false);
     const [showCustomNotification, setShowCustomNotification] = useState(false);
 
+    
     const handleWelcomeMessage = () => {
       setShowCustomNotification(true);
     };
@@ -156,6 +157,12 @@ import ToastNotification from './ToastNotification';
     const toggleDropdown = () => {
       console.log('Toggle dropdown');
       setIsDropdownOpen(!isDropdownOpen);
+      // Toggle the 'open' class on nav-links
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('open', !isDropdownOpen);
+    };
+    const closeMenu = () => {
+      setIsDropdownOpen(false);
     };
     
     const handleNavLinkClick = () => {
@@ -183,7 +190,7 @@ window.addEventListener('resize', checkWindowWidth);
       <nav className="navbar">
   
         <div className="navlist">
-        <div className={`menu-icon ${isDropdownOpen ? 'open' : ''}`} onClick={toggleDropdown}>        <div className="bar">
+        <div className={`menu-icon ${isDropdownOpen ? 'open' : 'close'}`} onClick={toggleDropdown}>        <div className="bar">
               <div className="line line1"></div>
               <div className="line line2"></div>
               <div className="line line3"></div>
@@ -194,9 +201,13 @@ window.addEventListener('resize', checkWindowWidth);
           <div class="loading-spinner"><i class="fas fa-circle-notch"></i></div>
 
       </div>
+      <div className="arrow-nav-container">
+          {isDropdownOpen && <div className="arrow-nav"></div>}
+        </div>
           <ul className={`nav-links ${isDropdownOpen ? 'open' : ''}`}>
           
-            <li>
+          
+          <li className={`nav-link ${isDropdownOpen ? 'open' : ''} ${isDropdownOpen ? 'home-open' : ''}`}>
               <Link to="/" onClick={handleNavLinkClick}>
 
               <svg width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="bi bi-person-plus-fill"> <path d="M9 21H7C4.79086 21 3 19.2091 3 17V10.7076C3 9.30887 3.73061 8.01175 4.92679 7.28679L9.92679 4.25649C11.2011 3.48421 12.7989 3.48421 14.0732 4.25649L19.0732 7.28679C20.2694 8.01175 21 9.30887 21 10.7076V17C21 19.2091 19.2091 21 17 21H15M9 21V17C9 15.3431 10.3431 14 12 14V14C13.6569 14 15 15.3431 15 17V21M9 21H15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/> </svg> 

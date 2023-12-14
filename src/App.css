@@ -201,10 +201,7 @@ body .nav-links.open {
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
-  top: 45px;
-  left: 0;
-  width: 100%;
-  height: auto; /* Change height to auto for dynamic content */
+ 
   background-color: #08AEEA;
   background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
   border-radius: 5px;
@@ -216,7 +213,7 @@ body .nav-links.open {
 body.dark-mode .nav-links.open {
   animation: fadeInNavLinks 0.9s ease;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
   top: 45px;
   left: 0;
@@ -400,6 +397,7 @@ body.dark-mode .admin-dropdown-content {
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
 .admin-dropdown:hover .admin-dropdown-content {
   display: block;
   opacity: 1;
@@ -439,31 +437,38 @@ body.dark-mode .admin-dropdown-content {
   margin: 0.1em 0;
   text-decoration: none;
 }
+.nav-links.open  li {
+  /* margin-bottom: 600px; */
+}
 body.light-mode .nav-links.open {
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
-  top: 45px;
+  top: 0px;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 7050%;
   background-color: #08AEEA;
   background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);  
-  border-radius: 5px; /* Adjust the value to your preference */
+  /* border-radius: 5px; /* Adjust the value to your preference */
+  /* border: 3px solid #000000; */
+
 }
 body.dark-mode .nav-links.open {
   animation: fadeInNavLinks 0.9s ease;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: absolute;
-  top: 45px;
+  top: 0px;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 7000%;
   background-image: linear-gradient(to right top, #051937, #072561, #2b2d8a, #5c2caf, #9413cd);
-  border-radius: 5px; /* Adjust the value to your preference */
-
+  /* border-radius: 5px; Adjust the value to your preference */
+  /* border: 2px solid #ffffff; */
+  /* border-radius: 20px; */
 }
+
 
 
 /* Icons */
@@ -661,10 +666,28 @@ body.dark-mode .nav-links.open {
 
   .nav-links.open {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: center; /* Align items vertically at the center */
+    position: absolute;
+    top: 100%; /* Adjust the top value if needed */
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Adjust background color if needed */
+    border: 1px solid #ddd; /* Add a border if needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a box shadow if needed */
   }
-
-
+  
+  .nav-links.open li {
+    margin-bottom: 20px; /* Adjust the margin-bottom value as needed */
+    font-size: 18px; /* Adjust the font size as needed */
+    /* Add any other styles for the elements when the navigation is open */
+  }
+  .nav-links.open li:first-child {
+    margin-top: 300px; 
+    font-size: px; /* Adjust the font size as needed */
+    /* Adjust the margin-top value for the first li element */
+  }
+  
   .admin-dropdown .dropdown-content {
     animation: fadeInNavLinks 0.9s ease;
 

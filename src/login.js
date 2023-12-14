@@ -23,8 +23,8 @@ const Login = ({ onLogin }) => {
 
     const requests = urlsToCheck.map(url =>
       Promise.race([
-        fetch(url, { method: "HEAD" })
-          .then(response => ({ url, success: response.ok })),
+        fetch(url, { method: "HEAD", mode: "no-cors" })
+          .then(response => ({ url, success: true })),
         new Promise(resolve => setTimeout(resolve, timeout, { url, success: false }))
       ])
     );

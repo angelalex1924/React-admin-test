@@ -1,5 +1,8 @@
 
-  
+const [isLoading, setIsLoading] = useState(false);
+setIsLoading(true);
+<div className={`loading-screen ${isLoading ? 'visible' : ''}`}>
+       <div class="loading-spinner"><i class="fas fa-circle-notch"></i></div>        </div>
   //1 API
   const Login = ({ onLogin }) => {
     const [errorOccurred, setErrorOccurred] = useState(false);
@@ -20,6 +23,7 @@
       localStorage.setItem("hasShownWelcomeMessage", "true");
   
       try {
+        setIsLoading(true);
         const response = await fetch(loginUrl, {
           method: "POST",
           headers: {

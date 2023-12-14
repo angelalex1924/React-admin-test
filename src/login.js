@@ -7,79 +7,84 @@ import './login.css';
 import SocialIcons from './SocialIcons';
 import ErrorNotification from './ErrorNotification';
 import WrongNotification from './WrongNotification';
-import {GoogleLogin} from 'react-google-login';
+import { GoogleLogin } from 'react-google-login';
 
 const Login = ({ onLogin }) => {
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [wrongCredentials, setWrongCredentials] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
   const navigate = useNavigate();
-  const loginUrl = "http://192.168.1.76:8000/api/login";
-  const clientid = "934283614989-l02fh32jakkeuupin2nmmmtlrdvg2uu7.apps.googleusercontent.com";
-  
-  //const loginUrl = "http://172.16.0.155:8000/api/login";
+
+  const loginUrl = "http://172.16.0.155:8000/api/login";
+
+  const checkOnlineUrls = async () => {
+    const urlsToCheck = ["http://192.168.1.76:8000", "http://172.16.0.155:8000"];
+    const timeout = 1000;
+
+    const requests = urlsToCheck.map(url =>
+      Promise.race([
+        fetch(url, { method: "HEAD" })
+          .then(response => ({ url, success: response.ok })),
+        new Promise(resolve => setTimeout(resolve, timeout, { url, success: false }))
+      ])
+    );
+
+    const results = await Promise.all(requests);
+    const onlineUrl = results.find(result => result.success)?.url || null;
+    return onlineUrl;
+  };
 
   const LoginUser = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    localStorage.setItem("hasShownWelcomeMessage", "true");
+    const onlineUrl = await checkOnlineUrls();
 
-    try {
-      const response = await fetch(loginUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+    if (onlineUrl) {
+      try {
+        setIsLoading(true); // Set loading to true before making the request
 
-      if (response.ok) {
-        setErrorOccurred(false); // Reset the error state
-        setWrongCredentials(false); // Reset the wrong credentials state
-        const data = await response.json();
-        const token = data.access_token;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-        localStorage.setItem("token", token);
-
-        toast.success("Login successful!", {
-          position: "top-right",
-          style: {
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            background: "#fff",
-            color: "#333",
-            theme: "colored",
+        const response = await fetch(`${onlineUrl}/api/login`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
+          body: JSON.stringify({ email, password }),
         });
 
-        onLogin();
-        navigate("/");
-      } else if (response.status === 401) {
-        setWrongCredentials(true); // Set wrong credentials state
-      } else {
-        setErrorOccurred(true);
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
+        if (response.ok) {
+          setErrorOccurred(false);
+          setWrongCredentials(false);
 
-      if (error.message === "Failed to fetch") {
-        setErrorOccurred(true); // Network error or API unreachable
-      } else {
-        setErrorOccurred(false); // Reset the error state for other errors (e.g., server error)
+          const data = await response.json();
+          const token = data.access_token;
+
+          localStorage.setItem("token", token);
+          onLogin();
+          navigate("/");
+        } else if (response.status === 401) {
+          setWrongCredentials(true);
+        } else {
+          setErrorOccurred(true);
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        setErrorOccurred(true);
+      } finally {
+        setIsLoading(false); // Set loading to false after the request completes
       }
+    } else {
+      console.error('No online URL available for login.');
     }
   };
 
   useEffect(() => {
     if (wrongCredentials) {
       const timeoutId = setTimeout(() => {
-        setWrongCredentials(false); // Reset the wrong credentials state after a delay
-      }, 3000); // Adjust the delay as needed (3000 milliseconds = 3 seconds)
+        setWrongCredentials(false);
+      }, 3000);
 
-      return () => clearTimeout(timeoutId); // Cleanup the timeout if the component unmounts or the effect is re-run
+      return () => clearTimeout(timeoutId);
     }
   }, [wrongCredentials]);
 
@@ -90,26 +95,16 @@ const Login = ({ onLogin }) => {
       easing: "ease-out",
     });
   }, []);
+
   const responseGoogle = (response) => {
     console.log(response);
-    // Handle the Google Sign-In response here
-    // You can extract user details like response.profileObj.email, response.profileObj.name, etc.
   };
+
+
 
   return (
     <div>
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+   
       {errorOccurred && <ErrorNotification message="An error occurred during login. Please try again." />}
       {wrongCredentials && <WrongNotification message="Wrong credentials. Please check your email and password." />}
 
@@ -158,6 +153,8 @@ const Login = ({ onLogin }) => {
         </form>
       </main>
        <SocialIcons />
+       <div className={`loading-screen ${isLoading ? 'visible' : ''}`}>
+       <div class="loading-spinner"><i class="fas fa-circle-notch"></i></div>        </div>
     </div>
   );
 

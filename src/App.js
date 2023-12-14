@@ -1,4 +1,5 @@
 import './App.css';
+import './loading.css'; // Import the CSS file
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
@@ -12,6 +13,7 @@ import Home from './home';
 import { ToastContainer, toast } from 'react-toastify';
 import Quiz from './quiz';
 import LogoutNotification from './LogoutNotification';
+import QuizDetail from './questions';
 
 import About from './about';
 import ToastNotification from './ToastNotification';
@@ -19,7 +21,9 @@ import ToastNotification from './ToastNotification';
 
 
 
+
   function App() {
+    const [isLoading, setIsLoading] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -55,36 +59,74 @@ import ToastNotification from './ToastNotification';
       setIsLoggedIn(true);
       setShowWelcomeMessage(true);
     };
-  // Access from Home
-  const handleLogout = async () => {
-    const logoutUrl = "http://192.168.1.76:8000/api/logout";
-  //const logoutUrl = "http://172.16.0.155:8000/api/logout";
-  
+    const checkLogoutUrls = async () => {
+      const logoutUrlsToCheck = [
+        "http://192.168.1.76:8000/api/logout",
+        "http://172.16.0.155:8000/api/logout"
+      ];
+    
+      const timeout = 2000; // Χρόνος timeout σε milliseconds
+    
+      const requests = logoutUrlsToCheck.map(url =>
+        Promise.race([
+          fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${localStorage.getItem("token")}`
+            },
+          }).then(response => ({ url, success: response.ok })),
+          new Promise(resolve => setTimeout(resolve, timeout, { url, success: false }))
+        ])
+      );
+    
+      const results = await Promise.all(requests);
+    
+      const successfulLogoutUrl = results.find(result => result.success)?.url || null;
+    
+      return successfulLogoutUrl;
+    };
+    
+    const handleLogout = async () => {
       try {
-        const response = await fetch(logoutUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`
-          },
-        });
-  
-        if (response.ok) {
+        setIsLoading(true);
+    
+        const successfulLogoutUrl = await checkLogoutUrls();
+    
+        if (successfulLogoutUrl) {
           localStorage.removeItem("token");
           console.log("Logout successful");
+    
+          // Update the state and show the logout notification
           setShowLogoutNotification(true);
           setIsLoggedIn(false);
-  
+    
           setTimeout(() => {
             setShowLogoutNotification(false);
-          }, 3000);
+          }, 3000); // Keep the logout notification for 3000 milliseconds (3 seconds)
+    
+          setTimeout(() => {
+            setIsLoading(false); // Set loading to false after completing the logout process
+          }, 300); // Adjusted the timeout value to 1000 milliseconds (1 second) for the loading screen
         } else {
-          console.error("Logout failed");
+          console.error("Logout failed for all URLs");
+    
+          // Handle errors
+    
+          // Ensure loading is set to false even in case of an error
+          setIsLoading(false);
         }
       } catch (error) {
-        console.error("API is Offline!", error);
+        console.error("An error occurred during logout:", error);
+    
+        // Handle errors
+    
+        // Ensure loading is set to false even in case of an error
+        setIsLoading(false);
       }
     };
+    
+ 
   
     useEffect(() => {
       if (isLoggedIn && showWelcomeMessage) {
@@ -148,6 +190,10 @@ window.addEventListener('resize', checkWindowWidth);
         </div>
        
           </div>
+          <div className={`loading-screen ${isLoading ? 'visible' : ''}`}>
+          <div class="loading-spinner"><i class="fas fa-circle-notch"></i></div>
+
+      </div>
           <ul className={`nav-links ${isDropdownOpen ? 'open' : ''}`}>
           
             <li>
@@ -256,11 +302,12 @@ window.addEventListener('resize', checkWindowWidth);
         <Route path="/user" element={<User />} />
         <Route
           path="/roles"
-          element={isLoggedIn ? <Roles /> : <Navigate to="/login" />}
+          element={<Roles />}
         />
         <Route path="/permissions" element={<Permissions />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/about" element={<About />} />
+        <Route path='/quiz/:id' element={<QuizDetail />} />
       </Routes>
       {showLogoutNotification && <LogoutNotification />}
       {isLoggedIn && <ToastNotification /> }

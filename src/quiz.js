@@ -1,73 +1,44 @@
-import './quiz.css';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import Modal from './Modal';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function Quiz() {
-    const [showModal, setShowModal] = useState(false);
-    const [quizzesData, setquizzesData] = useState([]);
-    const [newQuizTitle, setNewQuizTitle] = useState(''); // Add state for newQuizTitle
-    const user_id = 1; // Replace with the actual user ID
-    // Define handleOpenModal function to open the modal
-    const handleOpenModal = () => {
-        setShowModal(true);
-    };
+const Quiz = () => {
+  const [quizzes, setQuizzes] = useState({ data: [] });
+  const [error, setError] = useState(null);
 
-    const handleCloseModal = () => {
-        setShowModal(false);
-    };
+  useEffect(() => {
+    const fetchQuizzes = async () => {
+      try {
+        const response = await fetch('http://172.16.0.155:8000/api/quiz');
 
-    useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const response = await axios.get('http://172.16.0.155:8000/api/questions');
-            setNewQuizTitle(response.data);
-          } catch (error) {
-            console.error('Error fetching questions:', error);
-          }
-        };
-      
-        fetchData(); // Call the async function immediately
-      }, []);
-      
-      const addNewQuiz = async () => {
-        try {
-          const respaddnew = await axios.post('http://172.16.0.155:8000/api/quiz', {
-            title: newQuizTitle,
-            user_id: user_id
-          });
-      
-          console.log('New quiz created:', respaddnew.data);
-          // Additional logic here if needed
-        } catch (error) {
-          console.error('Error creating new quiz:', error);
+        if (!response.ok) {
+          throw new Error('Failed to fetch quizzes');
         }
-      };
-      
 
-    return (
-        <div className='quizmenubox'>
-            <h1 className='quizmenutitle'>All Quizzes</h1>
-            <button className='addnew' onClick={handleOpenModal}>
-                Add New
-            </button>
-            <Modal show={showModal} handleClose={handleCloseModal} handleSave={addNewQuiz}>
-                {/* Content for your modal */}
-                <h2>Add new Quiz</h2>
-            </Modal>
-            <div className='line-quiz'></div>
-            <div className='listofquizzes'>
-                {quizzesData.map((quiz, index) => (
-                    <div key={index}>
-                        <Link to={`/contentofquiz/${quiz.id}`} className='quizelements'>
-                            {quiz.title}
-                        </Link>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
+        const data = await response.json();
+        console.log('API response:', data);
+        setQuizzes(data); // Assuming the response is an object with a 'data' property
+      } catch (error) {
+        console.error('Error fetching quizzes:', error);
+        setError('An error occurred while fetching quizzes.');
+      }
+    };
+
+    fetchQuizzes();
+  }, []);
+
+  return (
+    <div className='listofquizzesbox'>
+      <h1 className='quizboxtitle'>Quizzes</h1>
+      {error && <p>{error}</p>}
+      <ul>
+        {quizzes.data.map((quiz) => (
+          <li key={quiz.id}>
+            <Link to={`/quiz/${quiz.id}`}>{quiz.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Quiz;

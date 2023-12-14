@@ -12,7 +12,9 @@ function Register() {
   const [errorOccurred, setErrorOccurred] = useState(false);
   const [registrationSuccessful, setRegistrationSuccessful] = useState(false);
   const navigate = useNavigate();
-  const registerURL = "http://192.168.1.76:8000/api/register";
+  // const registerURL = "http://192.168.1.76:8000/api/register";
+  const registerURL = "http://172.16.0.155:8000/api/register";
+
 
   const registerUser = async () => {
     const email = document.getElementById("email").value;

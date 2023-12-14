@@ -67,6 +67,13 @@ function Home({ isLoggedIn  }) {
             <p>Active Sessions: 20</p>
           </div>
         </Link>
+        <Link style={{textDecoration: 'none'}} to="/quiz" className="home-section" data-aos="fade-up" data-aos-delay="200">
+          <h2> 🌍👨‍💻🔍 Quiz</h2>
+          <div className="home-widget">
+            <p>Control your Quizzes easy!</p>
+            <p>Add questions to quizzes with ease</p>
+          </div>
+        </Link>
       </div>
       
       <div className="home-instructions" data-aos="fade-up" data-aos-delay="300">

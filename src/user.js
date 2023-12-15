@@ -57,16 +57,7 @@ function User() {
           <div className="input-container unique-frame-role">
             <h3>Show Roles of a User</h3>
             <form>
-            <label htmlFor="update-permission" className="label-role">
-                User ID:
-              </label>
-              <input
-                type="text"
-                id="new-permission-name"
-                name="new-permission-name"
-                className="input-role"
-                required
-              />
+           
               <button
                 type="button"
                 // onClick={() => showPermissions()}

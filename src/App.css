@@ -477,40 +477,80 @@ body.dark-mode .nav-links.open {
   margin-right: 20px;
 }
 .logout-button {
-  background-color: #ffffff;
-  border:#000;
-  border-radius: 30px;
-  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition-duration: 0.3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(236, 59, 59);
+  padding: 0;
   margin-right: 10px;
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-  color: #ff2727;
-  text-decoration: none; /* Make sure the link is not underlined */
+  will-change: transform, width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
 
-/* .logout-button:hover,
-.logout-button:active {
-  background-color: #ff2222;
-  color: #ffffff;
-} */
+/* plus sign */
+.logout-button .sign {
+  width: 100%;
+  transition-duration: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button .sign svg {
+  width: 17px;
+}
+
+.logout-button .sign svg path {
+  fill: white;
+}
+/* text */
+.logout-button .text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: 0.3s;
+}
+/* hover effect on button width */
 .logout-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-  background-color: #e90606;
-  color: #fff;
-}
-/* If you want to apply different styles to the text in normal and hover states, you can use a separate class for the text */
-
-.logout-text {
-  color: #ff2020;
-  transition: color 0.3s ease;
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: 0.3s;
+  will-change: transform, width;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
 }
 
-.logout-button:hover .logout-text,
-.logout-button:active .logout-text {
-  color: #ffffff;
+.logout-button:hover .sign {
+  width: 30%;
+  transition-duration: 0.3s;
+  padding-left: 20px;
 }
+/* hover effect button's text */
+.logout-button:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: 0.3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.logout-button:active {
+  transform: translate(2px, 2px);
+}
+
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
   position: absolute;

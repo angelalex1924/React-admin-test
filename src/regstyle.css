@@ -21,11 +21,62 @@
   font-family: "Poppins", sans-serif;
   margin-bottom: 150%;
 }
+ .coolinput-register{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+  width: 500px;
+ margin-left: 100px;
+} 
+
+
+.coolinput-register label.text {
+  font-size: 0.75rem;
+  color: #06c0a1;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #e8e8e8;
+  width: fit-content;
+  border-radius: 8px;
+  border: 2px #06c0a1 solid;
+  font-family: 'Poppins', sans-serif; /* Use the same font as the rest of the text */
+
+
+}
+
+
+.coolinput-register input[type=text].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #06c0a1 solid;
+  border-radius: 10px;
+  background: #e8e8e8;
+  font-family: 'Poppins', sans-serif; /* Use the same font as the rest of the text */
+
+}
+.coolinput-register input[type=password].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2px #06c0a1 solid;
+  border-radius: 10px;
+  background: #e8e8e8;
+  -moz-text-security: disc;
+  font-family: 'Poppins', sans-serif;
+}
+.coolinput-register input[type=text].input:focus {
+  outline: none;
+}
+
 
 .register-form {
 /*margin-bottom: 200%;*/
   width: 450px;
-  height: 650px;
+  height: 725px;
   border-radius: 20px;
   box-shadow: 2px 2px 100px #00000057, -2px -2px 100px #0a022288;
   backdrop-filter: blur(3px);
@@ -34,7 +85,14 @@
 -moz-box-shadow: 0px 0px 113px 12px rgba(81,255,46,0.47);
 box-shadow: 0px 0px 113px 12px rgba(81,255,46,0.47);
 }
-
+.coolframe-box{
+  margin-bottom: 20px;
+}
+.email-icon{
+  margin-left: 250px;
+position: fixed;
+top: 210px;
+}
 body.light-mode .register-heading {
   text-align: center;
   padding: 1rem 1rem;
@@ -53,43 +111,8 @@ body.dark-mode .register-heading {
   font-style: bold;
 }
 
-.register-input-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 4rem 2rem 2rem;
-  outline: none;
-  border-style: none;
-  font-weight: bold;
-}
 
-.register-input-box input {
-  margin-top: 0.5rem;
-  padding: 12px;
-  outline: none;
-  border: 2px solid #07d888;
-  border-radius: 8px; /* Adjusted border-radius */
-  background-color: #fff; /* Initial white background color */
-  color: #13b990;
-  font-weight: bold;
-  width: 100%;
-  transition: box-shadow 0.3s, background-color 0.3s;
-}
 
-.register-input-box input::placeholder {
-  color: #0fc295;
-}
-
-.register-input-box input:focus {
-  outline: none;
-  box-shadow: 0 0 12px rgba(52, 152, 219, 0.4);
-  background-color: #3498db; /* Blue background color on focus */
-  color: #ffffff; /* White text color on focus */
-}
-
-.register-input-box input:focus::placeholder {
-  color: #ffffffb0; /* Slightly transparent white placeholder color on focus */
-}
 
 .register-icon {
   padding-right: 0.5rem;
@@ -193,9 +216,7 @@ body.dark-mode .register-heading {
     margin: 0 auto; /* Center the form on smaller screens */
   }
 
-  .register-input-box {
-    margin: 0 1rem 1rem 1rem; /* Adjusted margin for smaller screens */
-  }
+ 
 
   .register-btn-box a {
     margin-right: 0; /* Removed the right margin for smaller screens */

@@ -17,9 +17,10 @@ body {
 }
 
 #main-content {
-  width: 400px;
+  width: 1300px;
   margin: 0 auto;
 }
+
 
 .frame-elements {
   display: grid;
@@ -29,7 +30,7 @@ body {
 }
 
 .unique-frame-role {
-  width: 300px;
+  width: 4000px;
   background-color: #fff;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

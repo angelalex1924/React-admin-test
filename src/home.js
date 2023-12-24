@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './home.css';
 import ToastNotification from './ToastNotification';
@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Home({ isLoggedIn  }) {
+  const [isGoogleLoggedIn, setIsGoogleLoggedIn] = useState(false);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -27,6 +29,10 @@ function Home({ isLoggedIn  }) {
       localStorage.setItem("hasShownWelcomeMessage", "true");
     }
   }, [isLoggedIn]);
+  useEffect(() => {
+    const storedGoogleToken = localStorage.getItem('googleAuthToken');
+    setIsGoogleLoggedIn(!!storedGoogleToken);
+  }, []);
     return (
         <div>
               {/* <ToastNotification /> */}
@@ -37,13 +43,13 @@ function Home({ isLoggedIn  }) {
         <p>Unleash the Power of Admin Excellence!</p>
       </div>
       <header className="unique-h2">
-                    {!isLoggedIn && (
+                    {!isLoggedIn || !localStorage.getItem('googleAuthToken') && (
                         <>
                             <h2>Please Sign-In to access Administrator tools.</h2>
                         </>
                     )}
                 </header>
-        {isLoggedIn && (
+        {isLoggedIn || localStorage.getItem('googleAuthToken') ?(
                         <>
       <div style={{textDecoration: 'none'}} className="home-content">
         <Link style={{textDecoration: 'none'}} to="/roles" className="home-section" data-aos="fade-up">
@@ -83,9 +89,9 @@ function Home({ isLoggedIn  }) {
       </div>
       
       </>
-        )}
+        ) : null}
         <div className="home-content">
-        {!isLoggedIn && (
+        {!isLoggedIn && !localStorage.getItem('googleAuthToken') ? (
                         <>
 
                             <Link to="/login" style={{textDecoration: 'none'}} className="home-section"  data-aos="fade-up">
@@ -103,7 +109,7 @@ function Home({ isLoggedIn  }) {
                                 </div>
                             </Link>
                         </>
-                    )}
+                    ) : null}
                     </div>
     </div>
     <SocialIcons />
